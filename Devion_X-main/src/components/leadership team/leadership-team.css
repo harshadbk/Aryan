@@ -1,0 +1,136 @@
+.leader-container {
+  height: auto;
+  padding: 150px 60px;
+  padding-top: 20px;
+  background-color: rgb(253, 246, 248);
+  font-family: sans-serif;
+}
+
+.leader-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: sans-serif;
+  align-items: center;
+}
+
+.leader-head {
+  color: var(--primary-color);
+  font-size: 22px;
+}
+
+.leader-title {
+  color: black;
+  opacity: 0.9;
+  font-size: 30px;
+}
+
+.leader-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.leader-leader-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  padding: 0px 10px;
+  border-top: 10px solid var(--primary-color);
+  justify-content: space-between;
+  position: relative; /* add this */
+}
+
+.leader-card-up {
+  transition: all 0.5s ease-in-out;
+  position: relative; /* add this */
+}
+
+.leader-leader-card {
+  position: relative;
+}
+
+.leader-card-up {
+  position: relative;
+}
+
+.leader-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.leader-leader-card:hover .leader-card-overlay {
+  background-color: rgb(131, 132, 145, 0.6);
+}
+
+.name {
+  font-size: 20px;
+  color: white;
+}
+
+.role {
+  font-size: 16px;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.leader-card-down {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  padding: 20px 10px;
+  width: 100%;
+  gap: 20px;
+  background-color: rgb(131, 132, 145, 0.6);
+}
+
+.card-icon {
+  display: flex;
+  padding: 2px;
+  height: 30px;
+  gap: 30px;
+}
+
+.card-icon img {
+  width: 50px;
+  object-fit: fill;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+}
+.card-icon img:hover {
+  object-fit: fill;
+  background-color: white;
+  border-radius: 30%;
+}
+
+@media (max-width: 1000px) {
+  .leader-container {
+    padding: 100px 30px;
+    padding-top: 20px;
+  }
+  .leader-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 750px) {
+  .leader-container {
+    padding: 100px 30px;
+    padding-top: 20px;
+  }
+  .leader-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .leader-card-down {
+    gap: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+}
