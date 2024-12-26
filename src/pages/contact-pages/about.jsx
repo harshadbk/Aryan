@@ -13,7 +13,7 @@ const About = () => {
         ]}
       />
       <CyberSecuritySImplify />
- 
+      
     </div>
   );
 };

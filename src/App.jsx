@@ -5,7 +5,6 @@ import ServicesPage from "./pages/ServicesPage";
 import Industries from "./pages/Industries";
 import Products from "./pages/Products";
 import Company from "./pages/Company";
-
 import BFSI from "./pages/industries-pages/BFSI";
 import Edu from "./pages/industries-pages/edu";
 import Gov from "./pages/industries-pages/gov";
@@ -30,15 +29,16 @@ import MobAppPen from "./pages/services-pages/MobAppPen";
 import WirePenTest from "./pages/services-pages/WirePenTest";
 import OtIot from "./pages/services-pages/IoIot";
 import CloudPen from "./pages/services-pages/CloudPen";
-import RedTeam from "./pages/services-pages/RedTeam";
-import BlueTeam from "./pages/services-pages/BlueTeam";
-import IntRedTeam from "./pages/services-pages/IntRedTeam";
-import ExtRedTeam from "./pages/services-pages/ExtRedTeam";
-import Soc from "./pages/services-pages/Soc";
-import DigForen from "./pages/services-pages/DigForen";
+// import RedTeam from "./pages/services-pages/RedTeam";
+// import BlueTeam from "./pages/services-pages/BlueTeam";
+// import IntRedTeam from "./pages/services-pages/IntRedTeam";
+// import ExtRedTeam from "./pages/services-pages/ExtRedTeam";
+// import Soc from "./pages/services-pages/Soc";
+// import DigForen from "./pages/services-pages/DigForen";
 import LetsWorkTog from "./pages/LetsWorkTog";
 import GetAQoute from "./pages/GetAQoute";
 import NetPenTest from "./pages/services-pages/NetPenTest";
+
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -77,12 +77,12 @@ function App() {
           <Route path="/ot-iot" element={<OtIot />} />
           <Route path="/cloud-pen" element={<CloudPen />} />
 
-          <Route path="/red-team" element={<RedTeam />} />
+          {/* <Route path="/red-team" element={<RedTeam />} />
           <Route path="/int-red-team" element={<IntRedTeam />} />
           <Route path="/ext-red-team" element={<ExtRedTeam />} />
           <Route path="/blue-team" element={<BlueTeam />} />
           <Route path="/soc" element={<Soc />} />
-          <Route path="/dig-foren" element={<DigForen />} />
+          <Route path="/dig-foren" element={<DigForen />} /> */}
 
           <Route path="/bfsi" element={<BFSI />} />
           <Route path="/education" element={<Edu />} />

@@ -1,6 +1,6 @@
 import "./nav.css";
 import { useState, useEffect } from "react";
-import Logo from "../../assets/Logo.png";
+import Logo from "../../assets/devon.png";
 import "./navbar2.css";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";

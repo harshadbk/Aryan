@@ -6,7 +6,9 @@ function MyCustomButton({
   name,
   backgroundColor = "red",
   color = "white",
-  onClicked = () => {},
+  onClicked = () => {
+    console.log("hello world")
+  },
 }) {
   const buttonRef = useRef(null);
   const rippleRef = useRef(null);
