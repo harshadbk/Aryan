@@ -12,6 +12,7 @@ import Api from "../../assets/ApiSec.png";
 import Wire from "../../assets/WirePen.png";
 import OtIot from "../../assets/Otiot.png";
 import Cloud from "../../assets/CloudPen.png";
+import Blackbackground from '../../assets/Blackbackground.jpg'
 
 const ServicesCard = () => {
   const settings = {
@@ -43,6 +44,7 @@ const ServicesCard = () => {
       },
     ],
   };
+
   const settingsAdv = {
     dots: adv.length > 2,
     infinite: true,
@@ -109,13 +111,16 @@ const ServicesCard = () => {
   };
 
   return (
-    <div className="bg-[#14161b] pb-20 ">
+    <div 
+      className="bg-cover bg-center pb-20"
+      style={{ backgroundImage: `url(${Blackbackground})`, backgroundSize: 'contain' }} // This will set the background image
+    >
       <div className="px-10 m-auto py-20 flex flex-col gap-10">
-        <h1 className="text-[var(--secondary-color)] text-center text-3xl ">
-          Our Leading Best Services
+        <h1 className="text-[var(--secondary-color)] text-center text-3xl">
+          Our Leading Best Software Services
         </h1>
         <div>
-          <h1 className="text-white text-center text-2xl ">
+          <h1 className="text-white text-center text-2xl">
             Custom Web Application Development
           </h1>
           <div className="mt-20 bg-300">
@@ -123,7 +128,7 @@ const ServicesCard = () => {
               {data.map((d) => (
                 <div
                   key={d.name}
-                  className="bg-white  text-black rounded-xl  h-[450px] sm:h-[400px] "
+                  className="bg-white text-black rounded-xl h-[450px] sm:h-[400px]"
                 >
                   <div className="h-56 bg-indigo-500 flex justify-center items-center rounded-t-xl">
                     <img
@@ -152,7 +157,7 @@ const ServicesCard = () => {
           </div>
         </div>
         <div>
-          <h1 className="text-white text-center text-2xl ">
+          <h1 className="text-white text-center text-2xl">
             Advanced Services
           </h1>
           <div className="mt-20 bg-300">
@@ -160,7 +165,7 @@ const ServicesCard = () => {
               {adv.map((d) => (
                 <div
                   key={d.name}
-                  className="bg-white  text-black rounded-xl  h-[450px] sm:h-[400px] "
+                  className="bg-white text-black rounded-xl h-[450px] sm:h-[400px]"
                 >
                   <div className="h-56 bg-indigo-500 flex justify-center items-center rounded-t-xl">
                     <img

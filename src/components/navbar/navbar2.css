@@ -1,3 +1,4 @@
+/* Navbar Container */
 .navbar-container {
   width: 100%;
   position: fixed;
@@ -11,6 +12,7 @@
   background-color: rgba(250, 252, 253, 255) !important;
 }
 
+/* Navbar */
 .navbar {
   padding-inline: 50px;
   display: flex;
@@ -25,10 +27,10 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* Dropdown */
 .dropdown {
   position: absolute;
   background-color: #808080d2;
-  /* border: 1px solid #ccc; */
   z-index: 10; /* Ensure dropdown is on top */
   visibility: hidden;
   opacity: 0;
@@ -78,6 +80,7 @@ a {
   left: 0; /* Adjust the left position to align with the item */
 }
 
+/* Navbar Item */
 a {
   display: flex;
   justify-content: center;
@@ -127,6 +130,7 @@ a {
   color: var(--secondary-color);
 }
 
+/* Button Styles */
 .btn {
   background-color: black !important;
   color: white;
@@ -172,7 +176,6 @@ a {
   border: none;
   cursor: pointer;
   z-index: 2;
-
   color: white;
 }
 
@@ -184,14 +187,12 @@ a {
   color: var(--primary-color);
 }
 
-/* services */
-
+/* Services Container */
 .services-container {
   position: absolute;
   top: 90px; /* Adjust the top position to align with the navbar height */
   padding: 30px;
   font-family: sans-serif !important;
-  /* box-shadow: 0px 0px 30px 30px rgba(187, 189, 191, 255); */
   background-color: #808080d2;
   color: white;
   border-top: 5px solid var(--secondary-color);
@@ -207,7 +208,6 @@ a {
 .services-card {
   display: flex;
   flex-direction: column;
-  /* gap: 10px; */
   width: max-content;
   cursor: default;
 }
@@ -225,6 +225,7 @@ a {
   color: var(--primary-color);
   background-color: #f0f0f0;
 }
+
 .services-card ul li {
   color: white;
   transition: all 0.3s ease-in-out;
@@ -253,6 +254,9 @@ a {
   color: var(--secondary-color);
 }
 
+/* Media Queries for Responsiveness */
+
+/* For Large Screens */
 @media (max-width: 1200px) {
   .services-container {
     display: none;
@@ -271,14 +275,14 @@ a {
     width: 250px;
     align-items: start;
     color: white;
-    position: fixed; /* Change to fixed to prevent overflow */
+    position: fixed;
     top: 0;
-    right: -300px; /* Initially off-screen */
-    height: 100vh; /* Full height */
+    right: -300px;
+    height: 100vh;
     background-color: rgb(0, 0, 0);
     z-index: 1;
     transition: right 0.3s ease-in-out;
-    overflow-y: auto; /* Add this to make the menu scrollable */
+    overflow-y: auto;
     gap: 0px;
     padding-top: 80px;
     justify-content: flex-start;
@@ -375,6 +379,7 @@ a {
     color: white;
     margin: 4px;
   }
+
   .dropdown {
     top: 40px;
   }
@@ -383,6 +388,7 @@ a {
   }
 }
 
+/* For Medium Screens */
 @media (max-width: 750px) {
   .logo {
     height: 70px;
@@ -397,11 +403,88 @@ a {
   }
 }
 
+/* For Small Screens */
 @media (max-width: 480px) {
   .btn {
     display: none;
   }
   .btn-ham {
     display: none;
+  }
+}
+
+/* Item Styling */
+.item {
+  position: relative;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.item p {
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000000;
+}
+
+/* Dropdown Animation */
+.dropdown {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-in-out, bgMove 3s infinite linear;
+  z-index: 100;
+}
+
+.card-header {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.inner-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inner-ul li {
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.inner-ul li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  border-radius: 5px;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bgMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

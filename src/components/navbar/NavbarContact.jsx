@@ -120,20 +120,20 @@ const NavbarContact = () => {
               <li>
                 <IoIosCall className="contact-icon" />
                 <p>For Sales</p>
-                <p>+91 90158 11818</p>
+                <p>+91 7666675306</p>
               </li>
               <li>
                 <AiOutlineMail className="contact-icon" />
-                <p>info@pwnpilot.com</p>
+                <p>info@devionx.com</p>
               </li>
               <li>
                 <IoIosCall className="contact-icon" />
                 <p>For Enquiry</p>
-                <p>+91 6389770755</p>
+                <p>+91 9370613157</p>
               </li>
               <li>
                 <AiOutlineMail className="contact-icon" />
-                <p>pwnpilot@gmail.com</p>
+                <p>devionx.tech@gmail.com</p>
               </li>
             </ul>
           </div>
@@ -141,9 +141,8 @@ const NavbarContact = () => {
       </div>
       <div className="nav">
         <div
-          className={`navbar-container ${scrolled ? "scrolled-navbar" : ""} ${
-            isMobile ? "scrolled-navbar" : ""
-          }
+          className={`navbar-container ${scrolled ? "scrolled-navbar" : ""} ${isMobile ? "scrolled-navbar" : ""
+            }
            ${showServices ? "dark-navbar" : ""}  
           `}
         >
@@ -177,77 +176,114 @@ const NavbarContact = () => {
                   <p>Home</p>
                 </div>
               </Link>
-              <Link to={"/services"}>
+
+            <Link to={"/services"}>
                 <div
                   className="item"
-                  onMouseEnter={handleServices}
-                  onMouseLeave={handleServices}
+                  onMouseEnter={() => handleDropdownToggle("Portfolio")}
+                  onMouseLeave={() => handleDropdownToggle(null)}
                 >
                   <p>Services</p>
-                  {showServices && (
-                    <div className="services-container">
-                      <div className="services-grid">
-                        <div className="services-card">
-                          <h3 className="card-header">
-                            Custom Web Application Development
-                            <ul className="inner-ul">
-                              <Link to={"/net-pen-test"}>
-                                <li>Web Development</li>
-                              </Link>
-                              <Link to={"/web-app-sec"}>
-                                <li>Web Application Security Testing</li>
-                              </Link>
-                              <Link to={"/mob-app-pen"}>
-                                <li>Customized Software Development</li>
-                              </Link>
-                              <Link to={"/api-sec"}>
-                                <li>CRM Software</li>
-                              </Link>
-                              <Link to={"/wire-pen-test"}>
-                                <li>ERP Systems</li>
-                              </Link>
-                              <Link to={"/ot-iot"}>
-                                <li>API Development</li>
-                              </Link>
-                              <Link to={"/cloud-pen"}>
-                                <li>App Development</li>
-                              </Link>
-                            </ul>
-                          </h3>
-                        </div>
-                        {/* <div className="services-card">
-                          <h3 className="card-header">Advanced Services</h3>
-                          <ul className="outer-ul">
-                            <Link to={"/red-team"} className="inner-div">
-                              <Link to={"/red-team"}>
-                                <li>Red Teaming</li>
-                              </Link>
+                  {activeDropdown === "Portfolio" && (
+                    <div className="dropdown">
+                      <h3 className="card-header">
+                      <h3
+                        className="content-center"
+                        style={{ fontWeight: "bold", textAlign: "center", color: "black" }}
+                      >
+                        Custom Web Application Development
+                      </h3>
+                      <ul className="inner-ul">
+                        <Link to={"/net-pen-test"}>
+                          <li>Web Development</li>
+                        </Link>
+                        <Link to={"/web-app-sec"}>
+                          <li>Web Application Security Testing</li>
+                        </Link>
+                        <Link to={"/mob-app-pen"}>
+                          <li>Customized Software Development</li>
+                        </Link>
+                        <Link to={"/api-sec"}>
+                          <li>CRM Software</li>
+                        </Link>
+                        <Link to={"/wire-pen-test"}>
+                          <li>ERP Systems</li>
+                        </Link>
+                        <Link to={"/ot-iot"}>
+                          <li>API Development</li>
+                        </Link>
+                        <Link to={"/cloud-pen"}>
+                          <li>App Development</li>
+                        </Link>
+                      </ul>
+                    </h3>
+                    </div>
+                  )}
+                </div>
+              </Link>
 
-                              <ul className="inner-ul">
-                                <Link to={"/int-red-team"}>
-                                  <li>Internal Red Teaming</li>
-                                </Link>
-                                <Link to={"/ext-red-team"}>
-                                  <li>External Red Teaming</li>
-                                </Link>
-                              </ul>
+              <Link to={"/portfolio"}>
+                <div
+                  className="item"
+                  onMouseEnter={() => handleDropdownToggle("Portfolio")}
+                  onMouseLeave={() => handleDropdownToggle(null)}
+                >
+                  <p>Portfolio</p>
+                  {activeDropdown === "Portfolio" && (
+                    <div className="dropdown">
+                      <h3 className="card-header">
+                        <h3 style={{ fontWeight: 'bold', textAlign: 'center' , color:'black'}}>Our Projects</h3>
+                        <ul className="inner-ul">
+                          <Link to={"/project-1"}>
+                            <li>Linear.app</li>
+                          </Link>
+                          <Link to={"/project-2"}>
+                            <li>Scrap Ji</li>
+                          </Link>
+                          <Link to={"/project-3"}>
+                            <li>Hazir Tur</li>
+                          </Link>
+                          <Link to={"/project-4"}>
+                            <li>Loyalty & Competition System - PIMCore</li>
+                          </Link>
+                          <Link to={"/project-5"}>
+                            <li>Project-5</li>
+                          </Link>
+                        </ul>
+                      </h3>
+                    </div>
+                  )}
+                </div>
+              </Link>
+
+              <Link to={"/products"}>
+                <div
+                  className="item"
+                  onMouseEnter={() => handleDropdownToggle("Products")}
+                  onMouseLeave={() => handleDropdownToggle(null)}
+                >
+                  <p>Products</p>
+                  {activeDropdown === "Products" && (
+                    <div className="dropdown">
+                      <h3 className="card-header">
+                        <h3 style={{ fontWeight: 'bold', textAlign: 'center' , color:'black'}}>Our Products</h3>
+                        <ul>
+                          <ul className="inner-ul">
+                            <Link to={"/product-1"}>
+                              <li>LMS(Learning Management System)</li>
                             </Link>
-                            <Link to={"/dev-sec-ops"} className="inner-div">
-                              <Link to={"/blue-team"}>
-                                <li>Blue Teaming</li>
-                              </Link>
-                              <ul className="inner-ul">
-                                <Link to={"/soc"}>
-                                  <li>Soc (Security Operation Center)</li>
-                                </Link>
-                                <Link to={"/dig-foren"}>
-                                  <li>Digital Forensic</li>
-                                </Link>
-                              </ul>
+                            <Link to={"/product-2"}>
+                              <li>ERS(Enterprise Resource Planning System)</li>
+                            </Link>
+                            <Link to={"/product-3"}>
+                              <li>CRM(Customer Relationship Management)</li>
+                            </Link>
+                            <Link to={"/product-4"}>
+                              <li>E-Commerce</li>
                             </Link>
                           </ul>
-                        </div> */}
-                      </div>
+                        </ul>
+                      </h3>
                     </div>
                   )}
                 </div>
@@ -259,9 +295,11 @@ const NavbarContact = () => {
                   onMouseEnter={() => handleDropdownToggle("Industries")}
                   onMouseLeave={handleMouseLeaveItem}
                 >
+                  
                   <p>Industries</p>
                   {showDropdown && activeDropdown === "Industries" && (
                     <div className="dropdown">
+                      <h3 className="card-header">
                       <ul>
                         <Link to={"/bfsi"}>
                           <li>BFSI</li>
@@ -282,8 +320,10 @@ const NavbarContact = () => {
                           <li>Education</li>
                         </Link>
                       </ul>
+                      </h3>
                     </div>
                   )}
+                 
                 </div>
               </Link>
 
@@ -303,8 +343,8 @@ const NavbarContact = () => {
                         <Link to={"/leadership"}>
                           <li>Leadership</li>
                         </Link>
-                        <Link to={"cert-in"}>
-                          <li>Cert-IN</li>
+                        <Link to={"/testimonials"}>
+                          <li>Testimonials</li>
                         </Link>
                         <Link to={"/career"}>
                           <li>Careers</li>

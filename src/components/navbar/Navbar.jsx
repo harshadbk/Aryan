@@ -8,19 +8,15 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 1200) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
+      setIsMobile(window.innerWidth < 1200);
     };
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -35,42 +31,21 @@ const Navbar = () => {
   }, []);
 
   const handleScroll = () => {
-    if (window.scrollY > 50) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
+    setScrolled(window.scrollY > 50);
   };
-
-  //... rest of your code
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   const handleDropdownToggle = (item) => {
-    if (activeDropdown === item) {
-      setShowDropdown(!showDropdown);
-    } else {
-      setActiveDropdown(item);
-      setShowDropdown(true);
-    }
-  };
-
-  const handleDropdownClose = () => {
-    setShowDropdown(false);
-    setActiveDropdown(null);
-  };
-
-  const handleMouseLeaveItem = () => {
-    handleDropdownClose();
+    setActiveDropdown((prev) => (prev === item ? null : item));
   };
 
   return (
     <div
-      className={`navbar-container ${scrolled ? "scrolled-navbar" : ""} ${
-        isMobile ? "scrolled-navbar" : ""
-      }`}
+      className={`navbar-container ${scrolled ? "scrolled-navbar" : ""} ${isMobile ? "mobile-navbar" : ""
+        }`}
     >
       <div className="navbar">
         <div className="logo">
@@ -80,7 +55,7 @@ const Navbar = () => {
         {!isOpen && (
           <div className="btn-ham">
             <MyCustomButton
-              name={"Get A Qoute"}
+              name={"Get A Quote"}
               backgroundColor="black"
               color="white"
             />
@@ -88,7 +63,7 @@ const Navbar = () => {
         )}
         {!isOpen && (
           <button className="hamburger-button" onClick={toggleMenu}>
-            &#9776; {/* This is the "☰" character for the hamburger icon */}
+            &#9776;
           </button>
         )}
         <div className={`items ${isOpen ? "open" : ""}`}>
@@ -106,10 +81,10 @@ const Navbar = () => {
             <div
               className="item"
               onMouseEnter={() => handleDropdownToggle("Services")}
-              onMouseLeave={handleMouseLeaveItem}
+              onMouseLeave={() => handleDropdownToggle(null)}
             >
               <p>Services</p>
-              {showDropdown && activeDropdown === "Services" && (
+              {activeDropdown === "Services" && (
                 <div className="dropdown">
                   <ul>
                     <li>Service 1</li>
@@ -120,59 +95,71 @@ const Navbar = () => {
               )}
             </div>
           </Link>
-          <Link to={"/products"}>
+          <Link to={"/portfolio"}>
             <div
               className="item"
-              onMouseEnter={() => handleDropdownToggle("Products")}
-              onMouseLeave={handleMouseLeaveItem}
+              onMouseEnter={() => handleDropdownToggle("Portfolio")}
+              onMouseLeave={() => handleDropdownToggle(null)}
             >
-              <p>Products</p>
-              {showDropdown && activeDropdown === "Products" && (
+              <p>Portfolio</p>
+              {activeDropdown === "Portfolio" && (
                 <div className="dropdown">
                   <ul>
-                    <li>Squad1</li>
+                    <li>Project 1</li>
+                    <li>Project 2</li>
                   </ul>
                 </div>
               )}
             </div>
           </Link>
-
-          <Link to={"/industries"}>
+          <Link to={"/products"}>
+            <div
+              className="item"
+              onMouseEnter={() => handleDropdownToggle("Products")}
+              onMouseLeave={() => handleDropdownToggle(null)}
+            >
+              <p>Products</p>
+              {activeDropdown === "Products" && (
+                <div className="dropdown">
+                  <ul>
+                    <li>Product 1</li>
+                    <li>Product 2</li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          </Link>
+          {<Link to={"/industries"}>
             <div
               className="item"
               onMouseEnter={() => handleDropdownToggle("Industries")}
-              onMouseLeave={handleMouseLeaveItem}
+              onMouseLeave={() => handleDropdownToggle(null)}
             >
               <p>Industries</p>
-              {showDropdown && activeDropdown === "Industries" && (
+              {activeDropdown === "Industries" && (
                 <div className="dropdown">
                   <ul>
                     <li>BFSI</li>
                     <li>Manufacturing</li>
                     <li>Pharmaceutical</li>
                     <li>Technology</li>
-                    <li>Government</li>
-                    <li>Education</li>
                   </ul>
                 </div>
               )}
             </div>
-          </Link>
-
+          </Link>}
           <Link to={"/company"}>
             <div
               className="item"
               onMouseEnter={() => handleDropdownToggle("Company")}
-              onMouseLeave={handleMouseLeaveItem}
+              onMouseLeave={() => handleDropdownToggle(null)}
             >
               <p>Company</p>
-              {showDropdown && activeDropdown === "Company" && (
+              {activeDropdown === "Company" && (
                 <div className="dropdown">
                   <ul>
                     <li>About Us</li>
                     <li>Leadership</li>
-                    <li>Cert-IN</li>
-                    <li>Key-25sec</li>
                     <li>Careers</li>
                     <li>Contact Us</li>
                   </ul>
@@ -183,17 +170,15 @@ const Navbar = () => {
 
           {!isOpen && (
             <MyCustomButton
-              name={"Get A Qoute"}
+              name={"Get A Quote"}
               backgroundColor="black"
               color="white"
             />
           )}
-
           {isOpen && (
             <div className="container">
               <div className="contact">
                 <h4>Contact Info</h4>
-
                 <ul>
                   <li>For Sales</li>
                   <li>For HR</li>
@@ -201,10 +186,8 @@ const Navbar = () => {
                   <li>career@gmail.com</li>
                 </ul>
               </div>
-
               <div className="follow">
                 <h4>Follow On</h4>
-
                 <ul>
                   <li>
                     <FaFacebookF />

@@ -2,6 +2,7 @@ import "./App.css";
 import { Route, BrowserRouter, Routes, useLocation } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
+import Portfolio from "./pages/portfolio/portfolio";
 import Industries from "./pages/Industries";
 import Products from "./pages/Products";
 import Company from "./pages/Company";
@@ -29,12 +30,26 @@ import MobAppPen from "./pages/services-pages/MobAppPen";
 import WirePenTest from "./pages/services-pages/WirePenTest";
 import OtIot from "./pages/services-pages/IoIot";
 import CloudPen from "./pages/services-pages/CloudPen";
+import Project1 from "./pages/portfolio_pages/project1";
+import Project2 from "./pages/portfolio_pages/project2";
+import Project3 from "./pages/portfolio_pages/project3";
+import Project4 from "./pages/portfolio_pages/project4";
+import Project5 from "./pages/portfolio_pages/project5";
+
+import Product1 from "./pages/product/product1";
+import Product2 from "./pages/product/product2";
+import Product3 from "./pages/product/product3";
+import Product4 from "./pages/product/product4";
+import Product_pages from "./pages/product_pages/product_pages";
+import Testimonials from "./pages/contact-pages/testimonials";
+
 // import RedTeam from "./pages/services-pages/RedTeam";
 // import BlueTeam from "./pages/services-pages/BlueTeam";
 // import IntRedTeam from "./pages/services-pages/IntRedTeam";
 // import ExtRedTeam from "./pages/services-pages/ExtRedTeam";
 // import Soc from "./pages/services-pages/Soc";
 // import DigForen from "./pages/services-pages/DigForen";
+
 import LetsWorkTog from "./pages/LetsWorkTog";
 import GetAQoute from "./pages/GetAQoute";
 import NetPenTest from "./pages/services-pages/NetPenTest";
@@ -65,9 +80,21 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/portfolio" element={<Portfolio />}/>
           <Route path="/industries" element={<Industries />} />
           <Route path="/products" element={<Products />} />
           <Route path="/company" element={<Company />} />
+          <Route path="/project-1" element={<Project1/>}/>
+          <Route path="/project-2" element={<Project2/>}/>
+          <Route path="/project-3" element={<Project3/>}/>
+          <Route path="/project-4" element={<Project4/>}/>
+          <Route path="/project-5" element={<Project5/>}/>
+          
+          <Route path="/product-1" element={<Product1/>}/>
+          <Route path="/product-2" element={<Product2/>}/>
+          <Route path="/product-3" element={<Product3/>}/>
+          <Route path="/product-4" element={<Product4/>}/>
+          <Route path="/product_pages" element={<Product_pages/>}/>
 
           <Route path="/net-pen-test" element={<NetPenTest />} />
           <Route path="/web-app-sec" element={<WebAppSecu />} />
@@ -76,6 +103,7 @@ function App() {
           <Route path="/wire-pen-test" element={<WirePenTest />} />
           <Route path="/ot-iot" element={<OtIot />} />
           <Route path="/cloud-pen" element={<CloudPen />} />
+          <Route path="/testimonials" element={<Testimonials/>}/>
 
           {/* <Route path="/red-team" element={<RedTeam />} />
           <Route path="/int-red-team" element={<IntRedTeam />} />

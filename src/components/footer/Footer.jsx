@@ -1,7 +1,8 @@
 import React from "react";
 import "./Footer.css";
 import MyCustomButton from "../button/CommonButton";
-import Coders from "../../assets/coders.png";
+// import Coders from "../../assets/coders.png";
+import Footer_side from "../../assets/footer_side.jpg"
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -20,8 +21,8 @@ const Footer = () => {
         <div className="footer-first">
           <div className="footer-first-left">
             <p className="txt">
-              We specialize in web development, delivering expert solutions, innovative designs, and scalable applications. Our dedicated team evaluates your digital infrastructure, identifies growth opportunities, and crafts tailored solutions to enhance your online presence and engagement.
-            </p>
+            Our Expertise in IT Solutions
+            We specialize in providing IT solutions, delivering expert services, innovative technologies, and scalable systems. Our dedicated team evaluates your digital infrastructure, identifies growth opportunities, and crafts customized solutions designed to enhance your business operations, security, and overall efficiency. With a focus on innovation and performance, we help organizations optimize their IT strategies and achieve long-term success.            </p>
           </div>
           <div className="footer-first-right">
             <div className="right-item">
@@ -45,13 +46,13 @@ const Footer = () => {
             <div className="footer-section" data-aos="fade-up">
               <h3>Working Time</h3>
               <div className="working-card">
-                <p className="card-txt"> 10am : 10pm IST</p>
-                <p className="card-txt">All 7 days</p>
-                <p className="card-txt">24 Hours Monitoring</p>
+                <p className="card-txt"> 9am : 9pm IST</p>
+                <p className="card-txt">monday to saturday</p>
+                <p className="card-txt">12 Hours Monitoring</p>
               </div>
             </div>
             <div className="footer-section" data-aos="fade-up">
-              <h3>Our Services</h3>
+              <h3>Product Services</h3>
               <ul>
                 <Link to={"/net-pen-test"}>
                   <li>Web Development</li>
@@ -89,7 +90,7 @@ const Footer = () => {
             </div> */}
 
             <div className="footer-section" data-aos="fade-up">
-              <h3>Industries We Serve</h3>
+              <h3>Advance Services</h3>
               <ul>
                 <Link to={"/bfsi"}>
                   <li>BFSI</li>
@@ -120,20 +121,20 @@ const Footer = () => {
             <div className="footer-section-lower" data-aos="fade-up">
               <h3>Official Address:</h3>
               <p>
-                Mayur Vihar, New Delhi
+                koperkhairne new mumbai
                 <br />
-                Delhi, 110091
+                new mumbai, 110091
               </p>
             </div>
             <div className="footer-section-lower" data-aos="fade-up">
               <h3>Call Us Toll Free:</h3>
-              <p>For Sales: +91 90158 11818 </p>
-              <p>For Enquiry: +91 63897 70755 </p>
+              <p>For Sales: +91 7666675306 </p>
+              <p>For Enquiry: +91 9370613157 </p>
             </div>
             <div className="footer-section-lower" data-aos="fade-up">
               <h3>Email Us:</h3>
-              <p>info@pwnpilot.com </p>
-              <p>pwnpilot@gmail.com </p>
+              <p>info@devionx.com </p>
+              <p>devionx.tech@gmail.com </p>
             </div>
           </div>
         </div>
@@ -148,7 +149,7 @@ const Footer = () => {
         <Link to={"http://www.codersortify.tech"} target="_blank">
           <div className="bottom-right">
             Made by Devion-X Technologies
-            <img src={Coders} className="coders-logo" alt="Logo" />
+            <img src={Footer_side} className="coders-logo" alt="Logo" />
           </div>
         </Link>
       </div>

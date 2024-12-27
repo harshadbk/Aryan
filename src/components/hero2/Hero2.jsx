@@ -18,14 +18,14 @@ const Hero2 = () => {
 
       <div className="hero-left">
         <div className="hero-head">
-          Welcome To <span className="span">Devion-X</span>
+          Welcome To <span className="span">Devion-X Technologies</span>
         </div>
         <div className="hero-title">
-          Web-Development <br /> Simplified
+          Simplified IT<br />Development Solutions
         </div>
         <div className="hero-txt">
           Transform your online presence with innovative
-          <br /> and scalable web solutions.
+          <br /> and scalable IT Development solutions.
         </div>
 
         <Link to={"/services"}>

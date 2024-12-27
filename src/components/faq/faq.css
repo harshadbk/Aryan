@@ -1,22 +1,161 @@
 .faq-container {
-  padding: 50px;
-  font-family: sans-serif;
+  padding: 30px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
+  border-radius: 8px;
+  animation: gradientAnimation 5s infinite alternate;
 }
 
 .faq {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 20px;
+  animation: fadeInUp 1s ease-in-out;
 }
 
+/* Styling for FAQ heading */
 .faq-head {
-  color: var(--primary-color);
-  font-size: 25px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: slideInLeft 1s ease-in-out;
 }
 
-@media (max-width: 750px) {
-  .faq-head {
-    font-size: 20px;
+/* Animation for sliding in from left */
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Styling for each FAQ item */
+.faq-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeIn 0.5s forwards, hoverEffect 0.3s ease-in-out;
+}
+
+/* Hover effect on FAQ items */
+.faq-item:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation for showing FAQ question */
+.faq-question {
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black; /* Black font color for question */
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for the question */
+.faq-question:hover {
+  background-color: orange;
+  color: var(--primary-color);
+}
+
+/* The answer part of each FAQ */
+.faq-answer {
+  padding: 0 15px;
+  display: none;
+  font-size: 16px;
+  color: black; /* Black font color for answer */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, color 0.3s ease; /* Add color transition */
+}
+
+/* Change color to yellow when hovering over the answer */
+.faq-answer:hover {
+  background-color: black; /* Yellow font color when hovered */
+}
+
+/* Display the answer when active */
+.faq-answer.active {
+  display: block;
+  max-height: 1000px; /* Adjust based on your content */
+  animation: fadeInAnswer 0.5s ease-in-out;
+}
+
+/* Rotate the arrow when the answer is active */
+.faq-arrow {
+  transition: transform 0.3s ease;
+}
+
+.faq-arrow.active {
+  transform: rotate(180deg); /* Rotate the arrow */
+}
+
+/* Optional: Adding an animation when each FAQ item appears */
+.faq-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s forwards, hoverEffect 0.3s ease-in-out;
+}
+
+.faq-item:nth-child(odd) {
+  animation-delay: 0.2s;
+}
+
+.faq-item:nth-child(even) {
+  animation-delay: 0.4s;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth transition for the background gradient animation */
+@keyframes gradientAnimation {
+  0% {
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
+  }
+  50% {
+    background: linear-gradient(45deg, rgba(0, 204, 255, 0.1), rgba(0, 0, 255, 0.2));
+  }
+  100% {
+    background: linear-gradient(45deg, rgba(255, 0, 204, 0.1), rgba(0, 0, 255, 0.2));
+  }
+}
+
+/* Fade-in effect for answers */
+@keyframes fadeInAnswer {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+/* Hover effect when the FAQ item is active */
+@keyframes hoverEffect {
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }

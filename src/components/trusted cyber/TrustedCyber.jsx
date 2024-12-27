@@ -15,11 +15,10 @@ const TrustedCyber = () => {
         <div className="trusted-content" data-aos="fade-up">
           <div className="trusted-left">
             <p className="trusted-head">
-              Trusted web development <br /> experts delivering <br /> robust solutions.
+              Trusted IT development <br /> experts delivering <br /> robust solutions.
             </p>
             <p className="trusted-txt">
-              Rely on our experienced team for reliable web development services. We're committed to building high-performance, user-friendly websites and applications, ensuring seamless digital experiences for your business.
-            </p>
+            Empower your business with cutting-edge IT solutions. Our skilled team specializes in creating robust, scalable, and tailor-made technology services designed to streamline your operations and drive innovation. From concept to deployment, we ensure seamless functionality and unmatched performance, keeping your business ahead in the digital era            </p>
           </div>
           <div className="trusted-right">
             <Link to={"/services"}>
