@@ -111,10 +111,7 @@ const ServicesCard = () => {
   };
 
   return (
-    <div 
-      className="bg-cover bg-center pb-20"
-      style={{ backgroundImage: `url(${Blackbackground})`, backgroundSize: 'contain' }} // This will set the background image
-    >
+    <div>
       <div className="px-10 m-auto py-20 flex flex-col gap-10">
         <h1 className="text-[var(--secondary-color)] text-center text-3xl">
           Our Leading Best Software Services

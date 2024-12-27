@@ -162,7 +162,7 @@ body {
 /* Footer Lower Section */
 .footer-lower {
   padding: 40px;
-  background-image: url("../../assets/blackbackground.jpg");
+  /* background-image: url("../../assets/blackbackground.jpg"); */
   background-size: cover; /* Make the image cover the entire area */
   background-position: center;
   box-sizing: border-box;
