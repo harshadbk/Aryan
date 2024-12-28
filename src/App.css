@@ -29,4 +29,5 @@ a {
 
 body {
   cursor: default;
+  overflow-x: hidden;
 }

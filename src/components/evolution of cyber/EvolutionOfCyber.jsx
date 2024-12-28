@@ -66,10 +66,8 @@ const EvolutionOfCyber = () => {
           </div>
           
           {/* Right Section (Form Section) */}
-          <div className="evolution-right" data-aos="fade-up">
-            <div className="form" data-aos="fade-up">
-              <div className="form-head">GET IN TOUCH</div>
-              <div className="form-title">Free Consultation</div>
+          <div className="evolution-right" >
+            <div className="form">
               <div className="form-form-right">
                 <div className="form">
                   <div className="form-title">{title}</div>

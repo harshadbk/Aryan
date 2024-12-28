@@ -180,11 +180,11 @@ const NavbarContact = () => {
             <Link to={"/services"}>
                 <div
                   className="item"
-                  onMouseEnter={() => handleDropdownToggle("Portfolio")}
+                  onMouseEnter={() => handleDropdownToggle("services")}
                   onMouseLeave={() => handleDropdownToggle(null)}
                 >
                   <p>Services</p>
-                  {activeDropdown === "Portfolio" && (
+                  {activeDropdown === "services" && (
                     <div className="dropdown">
                       <h3 className="card-header">
                       <h3
@@ -222,37 +222,13 @@ const NavbarContact = () => {
                 </div>
               </Link>
 
-              <Link to={"/portfolio"}>
+              <Link to={"/my-portfolio"}>
                 <div
                   className="item"
-                  onMouseEnter={() => handleDropdownToggle("Portfolio")}
+                  onMouseEnter={() => handleDropdownToggle("portfolio")}
                   onMouseLeave={() => handleDropdownToggle(null)}
                 >
                   <p>Portfolio</p>
-                  {activeDropdown === "Portfolio" && (
-                    <div className="dropdown">
-                      <h3 className="card-header">
-                        <h3 style={{ fontWeight: 'bold', textAlign: 'center' , color:'black'}}>Our Projects</h3>
-                        <ul className="inner-ul">
-                          <Link to={"/project-1"}>
-                            <li>Linear.app</li>
-                          </Link>
-                          <Link to={"/project-2"}>
-                            <li>Scrap Ji</li>
-                          </Link>
-                          <Link to={"/project-3"}>
-                            <li>Hazir Tur</li>
-                          </Link>
-                          <Link to={"/project-4"}>
-                            <li>Loyalty & Competition System - PIMCore</li>
-                          </Link>
-                          <Link to={"/project-5"}>
-                            <li>Project-5</li>
-                          </Link>
-                        </ul>
-                      </h3>
-                    </div>
-                  )}
                 </div>
               </Link>
 
@@ -324,6 +300,16 @@ const NavbarContact = () => {
                     </div>
                   )}
                  
+                </div>
+              </Link>
+              <Link to={"/blogs"}>
+              <div
+                  className="item"
+                  onMouseEnter={() => handleDropdownToggle("Company")}
+                  onMouseLeave={handleMouseLeaveItem}
+                >
+
+                  <p>Blogs</p>
                 </div>
               </Link>
 

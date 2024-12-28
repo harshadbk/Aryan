@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Routes, useLocation } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
 import Portfolio from "./pages/portfolio/portfolio";
+import Blogs from "./pages/blogs/blogs"
 import Industries from "./pages/Industries";
 import Products from "./pages/Products";
 import Company from "./pages/Company";
@@ -80,7 +81,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<Portfolio />}/>
+          <Route path="/my-portfolio" element={<Portfolio />}/>
+          <Route path="/blogs" element={<Blogs/>}/>
           <Route path="/industries" element={<Industries />} />
           <Route path="/products" element={<Products />} />
           <Route path="/company" element={<Company />} />

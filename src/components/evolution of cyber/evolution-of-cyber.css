@@ -1,6 +1,6 @@
 .evolution-container {
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -9,7 +9,7 @@
   align-items: center;
   color: white;
   font-family: sans-serif;
-  overflow-x: hidden;
+  overflow: hidden;
   cursor: default;
 }
 
@@ -19,7 +19,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Increased opacity to make it darker */
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,6 +27,7 @@
 
 .evolution-content {
   width: 100%;
+  max-width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,12 +84,12 @@ img {
 }
 
 .evolution-call {
-  width: 70%;
+  width: 120%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
   color: white;
   transition: all 0.4s ease-in-out;
 }
@@ -103,11 +104,11 @@ img {
   display: flex;
   align-items: center;
   color: black;
-  width: 400px;
+  width: 800px;
   border: 1px solid black;
   box-shadow: 0px 0px 20px 20px black;
   border-radius: 10px;
-  width: 40%;
+  max-height: 90vh;
 }
 
 .form {
@@ -115,19 +116,12 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  width: 100%;
 }
 
 .form-head {
   font-size: 20px;
   color: var(--primary-color);
   width: 100%;
-}
-
-.form-title {
-  width: 100%;
-  font-size: 30px;
-  font-weight: bold;
 }
 
 .form-inputs {
@@ -163,120 +157,4 @@ textarea {
   width: max-content;
   display: flex;
   justify-content: center;
-}
-
-@media (max-width: 1200px) {
-  .evolution-container {
-    height: 100vh;
-  }
-  .evolution-head {
-    font-size: 40px;
-  }
-
-  .evolution-left {
-    padding-top: 30px;
-    padding: 20px;
-    justify-content: center;
-  }
-
-  .evolution-content {
-    justify-content: center;
-  }
-
-  .evolution-right {
-    padding: 20px;
-    margin-right: 0px;
-  }
-  .form {
-    align-items: center;
-  }
-  .input {
-    padding: 10px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .evolution-left {
-    width: 50%;
-  }
-  .evolution-right {
-    width: 40%;
-  }
-  .evolution-head {
-    font-size: 30px;
-  }
-  .evolution-txt {
-    line-height: 18px;
-  }
-}
-
-@media (max-width: 750px) {
-  .evolution-container {
-    height: 120vh;
-  }
-
-  .evolution-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 40px;
-  }
-  .evolution-left,
-  .evolution-right {
-    width: 100%;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .evolution-head {
-    font-size: 30px;
-  }
-
-  .evolution-txt {
-    font-size: 16px;
-    line-height: 16px;
-    letter-spacing: 0px;
-  }
-}
-
-@media (max-width: 450px) {
-  .evolution-container {
-    height: 120vh;
-  }
-
-  .evolution-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
-
-  .evolution-left {
-    padding-inline: 10px;
-  }
-
-  .evolution-head {
-    font-size: 20px;
-  }
-
-  .evolution-txt {
-    font-size: 12px;
-  }
-
-  .evolution-right {
-    margin-right: 0px;
-    margin-top: 20px;
-    padding-block: 20px;
-    padding: 20px;
-  }
-
-  .form-inputs {
-    width: 97%;
-  }
-
-  .input {
-    padding: 8px 10px;
-  }
-}
-
-@media (max-width: 350px) {
-  /* Add any additional styling for smaller screens */
 }

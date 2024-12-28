@@ -2,7 +2,6 @@
 .cyber-container {
   display: flex;
   min-height: 100vh;
-  /* background-image: url('../../assets/whitebackground.jpg'); */
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -132,7 +131,6 @@
   left: 50%;
   width: 300%;
   height: 300%;
-  background: #ff2e2e;
   transition: all 0.4s;
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
@@ -182,6 +180,9 @@
   color: #ffcc00;
   font-size: 1.5rem;
   margin-top: 10px;
+  display: flex;           
+  flex-direction: row;  
+  align-items: center;     
 }
 
 .count-no {
