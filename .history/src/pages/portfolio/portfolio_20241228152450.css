@@ -1,0 +1,79 @@
+@keyframes slideIn {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bounceIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .animate-slideIn {
+    animation: slideIn 1s ease-out;
+  }
+  
+  .bounceIn {
+    animation: bounceIn 1.2s ease-in-out;
+  }
+
+.h1 {
+    padding-top: 25px; /* Adjusts the spacing from the top */
+    padding-bottom: 25px;
+    font-weight: bold;  /* Makes the text bold */
+    color: orange;        /* Sets the text color */
+    font-size: 2.5rem;  /* Increases font size for better visibility */
+    text-align: center; /* Centers the text */
+    text-transform: uppercase; /* Converts text to uppercase */
+    animation: slideIn 1s ease-out, bounceIn 1.2s ease-in-out; /* Adds animations */
+    line-height: 1.5; /* Adjusts line height for better readability */
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Animation for bounce-in effect */
+  @keyframes bounceIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Additional hover effect for interactivity */
+  .h1:hover {
+    color: darkblue; /* Changes text color on hover */
+    transform: scale(1.1); /* Slightly enlarges the text */
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  }

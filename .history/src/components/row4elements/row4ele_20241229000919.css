@@ -1,0 +1,103 @@
+/* Container for the entire section */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Header styling */
+.header {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 36px;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+}
+
+/* Individual row item styling */
+.row-item {
+  flex: 1 1 20%;
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.row-item:hover {
+  transform: scale(1.05);
+}
+
+/* Row icon styling */
+.row-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.row-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* CountUp number styling */
+.row-no {
+  font-size: 30px;
+  color: #2196F3;
+  font-weight: bold;
+  margin: 10px 0;
+  display: inline;
+}
+
+/* Add a "+" sign styling if needed */
+.row-plus {
+  font-size: 30px;
+  color: #2196F3;
+  font-weight: bold;
+  display: inline;
+}
+
+/* Description text styling */
+.row-col p {
+  font-size: 15px;
+  color: #333;
+}
+
+/* Add responsive design for mobile view */
+@media (max-width: 768px) {
+  .row-item {
+    flex: 1 1 45%;
+    margin: 10px 0;
+  }
+
+  .header h1 {
+    font-size: 28px;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .row-item {
+    flex: 1 1 100%;
+    margin: 10px 0;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+}

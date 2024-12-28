@@ -1,0 +1,67 @@
+.project-container {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Center the image container */
+.image-container {
+    text-align: center;
+    margin-bottom: 40px; /* Add more space below the image container */
+    opacity: 0; /* Initially hidden for animation */
+    animation: fadeIn 1s ease-in-out forwards 0.5s; /* Fade-in animation */
+}
+
+/* Image styling with reduced size and hover zoom effect */
+.project-image {
+    max-width: 50%; /* Reduced image size to half */
+    height: auto;
+    min-width: 200px; /* Set a higher minimum width to ensure better visibility */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+}
+
+.project-image:hover {
+    transform: scale(1.1); /* Zoom in on hover */
+}
+
+/* Text styling with fade-in effect */
+.project-description {
+    text-align: center;
+    margin-top: 40px; /* Add more space above text */
+    opacity: 0; /* Initially hidden for animation */
+    animation: fadeIn 1s ease-in-out forwards 1s; /* Fade-in animation for text */
+}
+
+.project-description p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Read more button styling with hover effect */
+.read-more-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Button hover animation */
+}
+
+.read-more-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+/* Keyframe animation for fade-in effect */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

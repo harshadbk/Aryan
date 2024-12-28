@@ -1,0 +1,68 @@
+.cyber-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+.cyber-detail-heading h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  /* margin-bottom: 2rem; */
+  color: #333;
+  animation: fadeInDown 1s ease-out;
+  margin-bottom: 40px;
+}
+
+.cyber-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.cyber-detail-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cyber-detail-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cyber-detail-head {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.cyber-detail-txt {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.cyber-detail-icon img {
+  width: 60px;
+  height: 60px;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
