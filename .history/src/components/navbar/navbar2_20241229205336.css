@@ -1,0 +1,493 @@
+/* Navbar Container */
+.navbar-container {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  z-index: 100;
+  background-color: white;
+  transition: top 0.3s ease-in-out;
+  font-family: sans-serif;
+}
+
+.dark-navbar {
+  background-color: rgba(250, 252, 253, 255) !important;
+}
+
+/* Navbar */
+.navbar {
+  padding-inline: 25px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.scrolled-navbar {
+  top: 0; /* Move the navbar to the top of the page when scrolled */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  background-color: #808080d2;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(0px);
+  transition: transform 0.3s ease-in-out;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  border-top: 4px solid var(--secondary-color);
+  top: 90px;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dropdown a {
+  width: 100%;
+  color: white;
+}
+
+a {
+  color: black;
+}
+
+.dropdown li {
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropdown li:hover {
+  background-color: #f0f0f0;
+  color: var(--primary-color);
+}
+
+.item:hover .dropdown {
+  transition: all 0.5s ease-in-out;
+  visibility: visible;
+  opacity: 1;
+  top: 70px; /* Adjust the top position to show the dropdown below the item */
+  left: 12px; /* Adjust the left position to align with the item */
+}
+
+/* Navbar Item */
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  position: relative;
+  height: 70px;
+  display: flex;
+  transition: all 2s ease-in-out;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  gap: 15px;
+}
+
+.logo {
+  width: 100px;
+  padding-inline-start: 0px;
+  padding-block: 0px;
+  height: 80px;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.items {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.item {
+  color: black;
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+}
+
+.item:hover {
+  color: var(--secondary-color);
+}
+
+/* Button Styles */
+.btn {
+  background-color: black !important;
+  color: white;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 7px;
+  width: 150px;
+  height: 50px;
+  font-size: 18px;
+}
+
+.btn-ham {
+  display: none;
+  top: 20px;
+  right: 60px;
+}
+
+/* Hamburger Icon Styles */
+.hamburger-button {
+  display: none;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 60px;
+  z-index: 2;
+}
+
+.hamburger-button:hover {
+  color: white;
+}
+
+/* Cancel Button Styles */
+.cancel-button {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  color: white;
+}
+
+.cancel-button img {
+  background-color: black;
+}
+
+.cancel-button:hover {
+  color: var(--primary-color);
+}
+
+/* Services Container */
+.services-container {
+  position: absolute;
+  top: 90px; /* Adjust the top position to align with the navbar height */
+  padding: 30px;
+  font-family: sans-serif !important;
+  background-color: #808080d2;
+  color: white;
+  border-top: 5px solid var(--secondary-color);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  width: 100%; /* Add this to make the grid take the full width */
+}
+
+.services-card {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  cursor: default;
+}
+
+.services-card ul {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  align-items: flex-start;
+  gap: 5px;
+  list-style: none;
+}
+
+.services-card ul li:hover {
+  color: var(--primary-color);
+  background-color: #f0f0f0;
+}
+
+.services-card ul li {
+  color: white;
+  transition: all 0.3s ease-in-out;
+  padding: 5px;
+}
+
+.outer-ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.inner-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.inner-ul {
+  padding-left: 10px;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+}
+
+.card-header {
+  color: var(--secondary-color);
+}
+
+/* Media Queries for Responsiveness */
+
+/* For Large Screens */
+@media (max-width: 1200px) {
+  .services-container {
+    display: none;
+  }
+
+  .btn-ham {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-right: 120px;
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    align-items: start;
+    color: white;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    height: 50vh;
+    background-color: rgb(0, 0, 0);
+    z-index: 1;
+    transition: right 0.3s ease-in-out;
+    overflow-y: auto;
+    gap: 0px;
+    padding-top: px;
+    justify-content: flex-start;
+  }
+
+  .btn {
+    height: 30px;
+    padding: 3px;
+  }
+
+  .item {
+    color: white;
+    height: 40px;
+    display: flex;
+    justify-content: start;
+    padding-inline: 10px;
+  }
+
+  .item:hover {
+    color: var(--primary-color);
+  }
+
+  .items.open {
+    right: 0; /* Bring it into view */
+  }
+
+  .navbar {
+    flex-direction: row;
+  }
+
+  .hamburger-button {
+    display: block;
+    color: rgb(0, 0, 0);
+    z-index: 100;
+  }
+
+  .cancel-button {
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 5px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact h4 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .contact ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contact ul li {
+    font-size: 12px;
+    color: white;
+    list-style: none;
+    margin-block: 4px;
+  }
+
+  .follow {
+    display: flex;
+    color: white;
+    flex-direction: column;
+  }
+
+  .follow h4 {
+    font-size: 18px;
+    color: white;
+    margin-block: 20px;
+  }
+
+  .follow ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+  }
+
+  .follow ul li {
+    size: 20px;
+    color: white;
+    margin: 4px;
+  }
+
+  .dropdown {
+    top: 40px;
+  }
+  .item:hover .dropdown {
+    top: 40px;
+  }
+}
+
+/* For Medium Screens */
+@media (max-width: 750px) {
+  .logo {
+    height: 70px;
+    width: 150px;
+  }
+  .hamburger-button {
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+    padding: 0px 10px;
+  }
+}
+
+/* For Small Screens */
+@media (max-width: 480px) {
+  .btn {
+    display: none;
+  }
+  .btn-ham {
+    display: none;
+  }
+}
+
+/* Item Styling */
+.item {
+  position: relative;
+  font-family: Arial, sans-serif;
+  margin: 15px;
+}
+
+.item p {
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000000;
+}
+
+/* Dropdown Animation */
+.dropdown {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-in-out, bgMove 3s infinite linear;
+  z-index: 100;
+}
+
+.card-header {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.inner-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inner-ul li {
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.inner-ul li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  border-radius: 5px;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bgMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

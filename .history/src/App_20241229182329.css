@@ -1,0 +1,33 @@
+:root {
+  --primary-color: rgb(239, 3, 72);
+  --secondary-color: rgba(254, 189, 2, 255);
+  --black-color: rgb(25, 25, 25);
+  --white-color: rgb(255, 255, 255);
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  list-style: circle;
+  text-decoration:double;
+}
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: orange !important;
+}
+
+.slick-dots li button:before {
+  color: white !important;
+}
+
+body {
+  cursor: default;
+  overflow-x: hidden;
+}

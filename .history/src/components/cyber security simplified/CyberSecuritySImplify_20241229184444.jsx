@@ -1,4 +1,4 @@
-// import React from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./cybersecurity.css";
 import { FaStar } from "react-icons/fa6";
@@ -46,7 +46,7 @@ const CyberSecuritySImplify = () => {
         <div className="detail">
           <div className="det">
             <div className="info">
-              <span className="per">
+              <p className="per">
                 <CountUp
                   enableScrollSpy={true}
                   scrollSpyOnce={true}
@@ -56,7 +56,7 @@ const CyberSecuritySImplify = () => {
                   className="count-no"
                 />
                 %
-              </span>
+              </p>
               <p>
                 Boost your web development success with our proven track record of delivering exceptional digital solutions.
               </p>
@@ -71,7 +71,7 @@ const CyberSecuritySImplify = () => {
           </div>
           <div className="det">
             <div className="info">
-              <span className="per">
+              <p className="per">
                 <CountUp
                   enableScrollSpy={true}
                   scrollSpyOnce={true}
@@ -81,7 +81,7 @@ const CyberSecuritySImplify = () => {
                   className="count-no"
                 />
                 %
-              </span>
+              </p>
               <p>
                 Our satisfied clients are a testament to our dedication to crafting impactful and innovative web experiences.
               </p>

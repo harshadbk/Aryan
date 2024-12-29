@@ -1,4 +1,4 @@
-import { useState } from "react";
+import{ useState } from "react";
 import "./faq.css"; // Import the CSS
 
 const data = [

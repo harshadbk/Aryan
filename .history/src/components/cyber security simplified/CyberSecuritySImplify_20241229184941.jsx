@@ -71,7 +71,7 @@ const CyberSecuritySImplify = () => {
           </div>
           <div className="det">
             <div className="info">
-              <span className="per">
+              <p className="per">
                 <CountUp
                   enableScrollSpy={true}
                   scrollSpyOnce={true}
@@ -81,7 +81,7 @@ const CyberSecuritySImplify = () => {
                   className="count-no"
                 />
                 %
-              </span>
+              </p>
               <p>
                 Our satisfied clients are a testament to our dedication to crafting impactful and innovative web experiences.
               </p>

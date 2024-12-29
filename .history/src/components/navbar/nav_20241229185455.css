@@ -1,0 +1,218 @@
+.navbar-container {
+  position: ;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--black-color);
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.item {
+  position: relative;
+  cursor: pointer;
+}
+
+.item p {
+  margin: 0;
+  padding: 0.5rem 0;
+  color: var(--white-color);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: var(--white-color);
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+}
+
+.dropdown li {
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s;
+}
+
+.dropdown li:hover {
+  background: rgba(239, 3, 72, 0.1);
+  color: var(--primary-color);
+}
+
+/* Mobile Styles */
+.hamburger-button, .cancel-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger-button {
+  color: var(--white-color);
+  font-size: 1.5rem;
+}
+
+.cancel-button img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile Navigation */
+@media screen and (max-width: 1200px) {
+  .hamburger-button {
+    display: block;
+  }
+
+  .items {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    flex-direction: column;
+    background: var(--white-color);
+    padding: 1rem;
+    transition: right 0.3s ease;
+    gap: 0;
+  }
+
+  .items.open {
+    right: 0;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .item {
+    width: 100%;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .item p {
+    color: var(--black-color);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .cancel-button {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    background: transparent;
+  }
+
+  .dropdown {
+    position: static;
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0.5rem 0;
+    transform: none;
+    opacity: 1;
+    animation: none;
+  }
+
+  .dropdown ul {
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  .dropdown li {
+    padding: 0.75rem 2rem;
+    color: var(--black-color);
+    font-size: 0.9rem;
+  }
+
+  .container {
+    margin-top: 2rem;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+
+  .contact, .follow {
+    margin-top: 1.5rem;
+  }
+
+  .contact h4, .follow h4 {
+    color: var(--black-color);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .contact ul li {
+    padding: 0.5rem 0;
+    color: var(--black-color);
+    font-size: 0.9rem;
+  }
+
+  .follow ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  .follow ul li {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .follow ul li:hover {
+    background: var(--primary-color);
+    color: var(--white-color);
+  }
+  
+  .btn-ham {
+    display: none;
+  }
+}
