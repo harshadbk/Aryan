@@ -10,6 +10,15 @@
   overflow: hidden;
 }
 
+.mybutton {
+  background-color: red;
+  color: white; /* Optional: For text color */
+  padding: 10px 20px; /* Optional: For padding */
+  border: none; /* Optional: Remove border */
+  border-radius: 5px; /* Optional: For rounded corners */
+  cursor: pointer; /* Optional: To change the cursor on hover */
+}
+
 .video {
   position: absolute;
   z-index: -1;

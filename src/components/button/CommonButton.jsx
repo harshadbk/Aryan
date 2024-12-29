@@ -7,7 +7,7 @@ function MyCustomButton({
   backgroundColor = "red",
   color = "white",
   onClicked = () => {
-    console.log("hello world")
+    console.log("Button clicked!");
   },
 }) {
   const buttonRef = useRef(null);
@@ -28,7 +28,7 @@ function MyCustomButton({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className="myButton"
-      style={{ backgroundColor: backgroundColor, color: color }}
+      style={{ backgroundColor, color }}
       onClick={onClicked}
     >
       {name}
@@ -40,7 +40,6 @@ function MyCustomButton({
   );
 }
 
-// PropTypes validation
 MyCustomButton.propTypes = {
   name: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string,
@@ -49,6 +48,3 @@ MyCustomButton.propTypes = {
 };
 
 export default MyCustomButton;
-
-
-// service id service_37krz59

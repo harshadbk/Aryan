@@ -112,6 +112,29 @@ const Footer = () => {
                 </Link>
               </ul>
             </div>
+            <div className="footer-section" data-aos="fade-up">
+              <h3>Industry We Served</h3>
+              <ul>
+                <Link to={"/bfsi"}>
+                  <li>BFSI</li>
+                </Link>
+                <Link to={"/manufacturing"}>
+                  <li>Manufacturing</li>
+                </Link>
+                <Link to={"/pharmaceutical"}>
+                  <li>Pharmaceutical</li>
+                </Link>
+                <Link to={"/technology"}>
+                  <li>Technology</li>
+                </Link>
+                <Link to={"/government"}>
+                  <li>Government</li>
+                </Link>
+                <Link to={"/education"}>
+                  <li>Education</li>
+                </Link>
+              </ul>
+            </div>
           </div>
         </div>
         <div className="divider"></div>
