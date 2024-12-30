@@ -162,7 +162,7 @@ a {
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 40px;
+  right: 45px;
   z-index: 2;
 }
 
@@ -176,7 +176,7 @@ a {
   position: absolute;
   top: 10px;
   left: 30px;
-  font-size: 20px;
+  font-size: 30px;
   border: none;
   cursor: pointer;
   z-index: 2;
@@ -326,20 +326,20 @@ a {
   .cancel-button {
     display: block;
     position: absolute;
-    top: 14px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
+    top: 15px;
+    left: 5px;
+    width: 50px;
+    height: 50px;
   }
 
   .container {
-    padding: 20px;
-    display: left;
+    padding: 10px;
+    display: flex;
     flex-direction: column;
   }
 
   .contact {
-    display: left;
+    display: flex;
     flex-direction: column;
   }
 

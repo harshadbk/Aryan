@@ -42,17 +42,15 @@ const Navbar = () => {
     setActiveDropdown((prev) => (prev === item ? null : item));
   };
 
-  const handleItemClick = (e) => {
-    if (e.target.tagName.toLowerCase() === 'li') {
-      const itemsElement = document.querySelector('.items');
-      itemsElement.classList.add('hiding');
-      
-      setTimeout(() => {
-        itemsElement.classList.remove('open');
-        itemsElement.classList.remove('hiding');
-        setIsOpen(false);
-      }, 300);
-    }
+  const handleItemClick = () => {
+    const itemsElement = document.querySelector('.items');
+    itemsElement.classList.add('hiding');
+    
+    // After animation completes, close the menu
+    setTimeout(() => {
+      itemsElement.classList.remove('open');
+      itemsElement.classList.remove('hiding');
+    }, 300); // Match this with your CSS transition duration
   };
 
   return (
@@ -86,10 +84,7 @@ const Navbar = () => {
             </button>
           )}
           <Link to={"/"}>
-            <div className="item" onClick={(e) => {
-              handleItemClick(e);
-              setIsOpen(false);
-            }}>
+            <div className="item" onClick={handleItemClick}>
               <p>Home</p>
             </div>
           </Link>
@@ -98,7 +93,6 @@ const Navbar = () => {
               className="item"
               onMouseEnter={() => handleDropdownToggle("Services")}
               onMouseLeave={() => handleDropdownToggle(null)}
-              onClick={(e) => e.stopPropagation()}
             >
               <p>Services</p>
               {activeDropdown === "Services" && (
@@ -117,7 +111,6 @@ const Navbar = () => {
               className="item"
               onMouseEnter={() => handleDropdownToggle("Portfolio")}
               onMouseLeave={() => handleDropdownToggle(null)}
-              onClick={(e) => e.stopPropagation()}
             >
               <p>Portfolio</p>
               {activeDropdown === "Portfolio" && (
@@ -135,7 +128,6 @@ const Navbar = () => {
               className="item"
               onMouseEnter={() => handleDropdownToggle("Products")}
               onMouseLeave={() => handleDropdownToggle(null)}
-              onClick={(e) => e.stopPropagation()}
             >
               <p>Products</p>
               {activeDropdown === "Products" && (
@@ -153,7 +145,6 @@ const Navbar = () => {
               className="item"
               onMouseEnter={() => handleDropdownToggle("Industries")}
               onMouseLeave={() => handleDropdownToggle(null)}
-              onClick={(e) => e.stopPropagation()}
             >
               <p>Industries</p>
               {activeDropdown === "Industries" && (
@@ -173,7 +164,6 @@ const Navbar = () => {
               className="item"
               onMouseEnter={() => handleDropdownToggle("Company")}
               onMouseLeave={() => handleDropdownToggle(null)}
-              onClick={(e) => e.stopPropagation()}
             >
               <p>Company</p>
               {activeDropdown === "Company" && (

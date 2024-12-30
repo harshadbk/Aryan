@@ -73,34 +73,9 @@ const NavbarContact = () => {
     handleDropdownClose();
   };
 
-	const handleItemClick = (e) => {
-		// Only close if a dropdown item was clicked
-		if (e.target.tagName.toLowerCase() === 'li') {
-			const itemsElement = document.querySelector('.items');
-			itemsElement.classList.add('hiding');
-			
-			setTimeout(() => {
-				itemsElement.classList.remove('open');
-				itemsElement.classList.remove('hiding');
-				setIsOpen(false); // Update the state
-			}, 300);
-		}
-	};
-
-  // New code to close the navbar when an item is clicked
-  const closeNavbar = () => {
-    setIsOpen(false);
+  const handleServices = () => {
+    setShowServices(!showServices);
   };
-
-  // Toggle dropdown visibility on click for mobile devices
-  useEffect(() => {
-    document.querySelectorAll('.navbar-item').forEach(item => {
-      item.addEventListener('click', function() {
-        const dropdown = this.querySelector('.navbar-dropdown');
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-      });
-    });
-  }, []);
 
   return (
     <div className="nav-con">
@@ -166,7 +141,10 @@ const NavbarContact = () => {
       </div>
       <div className="nav">
         <div
-          className={`navbar-container ${scrolled ? "scrolled-navbar" : ""} ${isMobile ? "scrolled-navbar" : ""} ${showServices ? "dark-navbar" : ""} ${isOpen ? "glass-door" : ""}`}
+          className={`navbar-container ${scrolled ? "scrolled-navbar" : ""} ${isMobile ? "scrolled-navbar" : ""
+            }
+           ${showServices ? "dark-navbar" : ""}  
+          `}
         >
           <div className="navbar">
             <div className="logo">
@@ -193,13 +171,13 @@ const NavbarContact = () => {
                   <img src={Cancel} alt="Cancel img" />
                 </button>
               )}
-              <Link to={"/"} onClick={closeNavbar}>
+              <Link to={"/"}>
                 <div className="item">
                   <p>Home</p>
                 </div>
               </Link>
 
-            <Link to={"/services"} onClick={closeNavbar}>
+            <Link to={"/services"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("services")}
@@ -244,7 +222,7 @@ const NavbarContact = () => {
                 </div>
               </Link>
 
-              <Link to={"/my-portfolio"} onClick={closeNavbar}>
+              <Link to={"/my-portfolio"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("portfolio")}
@@ -254,7 +232,7 @@ const NavbarContact = () => {
                 </div>
               </Link>
 
-              <Link to={"/products"} onClick={closeNavbar}>
+              <Link to={"/products"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("Products")}
@@ -287,7 +265,7 @@ const NavbarContact = () => {
                 </div>
               </Link>
 
-              <Link to={"/industries"} onClick={closeNavbar}>
+              <Link to={"/industries"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("Industries")}
@@ -297,7 +275,7 @@ const NavbarContact = () => {
                   <p>Industries</p>
                   {showDropdown && activeDropdown === "Industries" && (
                     <div className="dropdown">
-                      <h3 className="card-header">
+                      <h3 className="card-header" style={{ fontWeight: 'bold', textAlign: 'left' , color:'black'}}>
                       <ul>
                         <Link to={"/bfsi"}>
                           <li>BFSI</li>
@@ -324,7 +302,7 @@ const NavbarContact = () => {
                  
                 </div>
               </Link>
-              <Link to={"/blogs"} onClick={closeNavbar}>
+              <Link to={"/blogs"}>
               <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("Company")}
@@ -335,7 +313,7 @@ const NavbarContact = () => {
                 </div>
               </Link>
 
-              <Link to={"/company"} onClick={closeNavbar}>
+              <Link to={"/company"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("Company")}

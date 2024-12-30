@@ -162,7 +162,7 @@ a {
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 40px;
+  right: 45px;
   z-index: 2;
 }
 
@@ -176,7 +176,7 @@ a {
   position: absolute;
   top: 10px;
   left: 30px;
-  font-size: 20px;
+  font-size: 30px;
   border: none;
   cursor: pointer;
   z-index: 2;
@@ -326,20 +326,20 @@ a {
   .cancel-button {
     display: block;
     position: absolute;
-    top: 14px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
+    top: 15px;
+    left: 5px;
+    width: 50px;
+    height: 50px;
   }
 
   .container {
-    padding: 20px;
-    display: left;
+    padding: 10px;
+    display: flex;
     flex-direction: column;
   }
 
   .contact {
-    display: left;
+    display: flex;
     flex-direction: column;
   }
 
@@ -385,11 +385,42 @@ a {
   }
 
   .dropdown {
-    top: 120px;
+    position: relative;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.2);
+    border-top: none;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    display: block;
+    margin-top: 10px;
   }
 
-  .item:hover .dropdown {
-    top: 40px;
+  /* Ensure dropdown items are properly styled */
+  .dropdown ul {
+    width: 100%;
+    padding: 0;
+  }
+
+  .dropdown li {
+    padding: 10px 20px;
+    width: 100%;
+    color: white !important;
+  }
+
+  /* Add transition for smooth closing */
+  .items.hiding {
+    right: -300px;
+    opacity: 0;
+  }
+
+  /* Ensure dropdowns are visible when parent item is clicked */
+  .item.active .dropdown {
+    display: block;
+    visibility: visible;
+    opacity: 1;
   }
 
   .item p {

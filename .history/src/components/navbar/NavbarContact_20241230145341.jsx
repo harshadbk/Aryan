@@ -14,93 +14,48 @@ import { AiOutlineMail } from "react-icons/ai";
 
 const NavbarContact = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [showServices, setShowServices] = useState(false);
 
+  // Check if mobile view
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 1200) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
+      setIsMobile(window.innerWidth <= 1200);
     };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const handleScroll = () => {
-    if (window.scrollY > 50) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  };
-
-  //... rest of your code
-
+  // Toggle mobile menu
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    if (!isOpen) {
+      setActiveDropdown(null);
+    }
+    document.body.style.overflow = !isOpen ? 'hidden' : '';
   };
 
+  // Handle dropdown toggle
   const handleDropdownToggle = (item) => {
-    if (activeDropdown === item) {
-      setShowDropdown(!showDropdown);
+    if (isMobile) {
+      // For mobile: toggle dropdown
+      setActiveDropdown(activeDropdown === item ? null : item);
     } else {
+      // For desktop: show on hover
       setActiveDropdown(item);
-      setShowDropdown(true);
     }
   };
 
-  const handleDropdownClose = () => {
-    setShowDropdown(false);
-    setActiveDropdown(null);
+  // Handle link click
+  const handleLinkClick = (e, hasDropdown) => {
+    if (isMobile && hasDropdown) {
+      e.preventDefault(); // Prevent navigation if has dropdown
+    } else {
+      setIsOpen(false); // Close menu on link click
+      document.body.style.overflow = '';
+    }
   };
-
-  const handleMouseLeaveItem = () => {
-    handleDropdownClose();
-  };
-
-	const handleItemClick = (e) => {
-		// Only close if a dropdown item was clicked
-		if (e.target.tagName.toLowerCase() === 'li') {
-			const itemsElement = document.querySelector('.items');
-			itemsElement.classList.add('hiding');
-			
-			setTimeout(() => {
-				itemsElement.classList.remove('open');
-				itemsElement.classList.remove('hiding');
-				setIsOpen(false); // Update the state
-			}, 300);
-		}
-	};
-
-  // New code to close the navbar when an item is clicked
-  const closeNavbar = () => {
-    setIsOpen(false);
-  };
-
-  // Toggle dropdown visibility on click for mobile devices
-  useEffect(() => {
-    document.querySelectorAll('.navbar-item').forEach(item => {
-      item.addEventListener('click', function() {
-        const dropdown = this.querySelector('.navbar-dropdown');
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-      });
-    });
-  }, []);
 
   return (
     <div className="nav-con">
@@ -166,7 +121,10 @@ const NavbarContact = () => {
       </div>
       <div className="nav">
         <div
-          className={`navbar-container ${scrolled ? "scrolled-navbar" : ""} ${isMobile ? "scrolled-navbar" : ""} ${showServices ? "dark-navbar" : ""} ${isOpen ? "glass-door" : ""}`}
+          className={`navbar-container ${scrolled ? "scrolled-navbar" : ""} ${isMobile ? "scrolled-navbar" : ""
+            }
+           ${showServices ? "dark-navbar" : ""}  
+          `}
         >
           <div className="navbar">
             <div className="logo">
@@ -193,58 +151,58 @@ const NavbarContact = () => {
                   <img src={Cancel} alt="Cancel img" />
                 </button>
               )}
-              <Link to={"/"} onClick={closeNavbar}>
+              <Link to="/" onClick={(e) => handleLinkClick(e, false)}>
                 <div className="item">
                   <p>Home</p>
                 </div>
               </Link>
 
-            <Link to={"/services"} onClick={closeNavbar}>
-                <div
-                  className="item"
-                  onMouseEnter={() => handleDropdownToggle("services")}
-                  onMouseLeave={() => handleDropdownToggle(null)}
-                >
-                  <p>Services</p>
-                  {activeDropdown === "services" && (
-                    <div className="dropdown">
-                      <h3 className="card-header">
-                      <h3
-                        className="content-center"
-                        style={{ fontWeight: "bold", textAlign: "center", color: "black" }}
-                      >
-                        Custom Web Application Development
-                      </h3>
-                      <ul className="inner-ul">
-                        <Link to={"/net-pen-test"}>
-                          <li>Web Development</li>
-                        </Link>
-                        <Link to={"/web-app-sec"}>
-                          <li>Web Application Security Testing</li>
-                        </Link>
-                        <Link to={"/mob-app-pen"}>
-                          <li>Customized Software Development</li>
-                        </Link>
-                        <Link to={"/api-sec"}>
-                          <li>CRM Software</li>
-                        </Link>
-                        <Link to={"/wire-pen-test"}>
-                          <li>ERP Systems</li>
-                        </Link>
-                        <Link to={"/ot-iot"}>
-                          <li>API Development</li>
-                        </Link>
-                        <Link to={"/cloud-pen"}>
-                          <li>App Development</li>
-                        </Link>
-                      </ul>
-                    </h3>
-                    </div>
-                  )}
+              <div 
+                className={`item ${activeDropdown === 'services' ? 'active' : ''}`}
+                onClick={() => isMobile && handleDropdownToggle('services')}
+                onMouseEnter={() => !isMobile && handleDropdownToggle('services')}
+                onMouseLeave={() => !isMobile && setActiveDropdown(null)}
+              >
+                <p>Services</p>
+                <div className="dropdown">
+                  <ul>
+                    <Link to="/service1" onClick={(e) => handleLinkClick(e, false)}>
+                      <li>Service 1</li>
+                    </Link>
+                    {/* ... other service links ... */}
+                  </ul>
                 </div>
-              </Link>
+              </div>
 
-              <Link to={"/my-portfolio"} onClick={closeNavbar}>
+              <div 
+                className={`item ${activeDropdown === 'products' ? 'active' : ''}`}
+                onClick={() => isMobile && handleDropdownToggle('products')}
+                onMouseEnter={() => !isMobile && handleDropdownToggle('products')}
+                onMouseLeave={() => !isMobile && setActiveDropdown(null)}
+              >
+                <p>Products</p>
+                <div className="dropdown">
+                  <h3 className="card-header">
+                    <h3 style={{ fontWeight: 'bold', textAlign: 'center' , color:'black'}}>Our Products</h3>
+                    <ul className="inner-ul">
+                      <Link to={"/product-1"}>
+                        <li>LMS(Learning Management System)</li>
+                      </Link>
+                      <Link to={"/product-2"}>
+                        <li>ERS(Enterprise Resource Planning System)</li>
+                      </Link>
+                      <Link to={"/product-3"}>
+                        <li>CRM(Customer Relationship Management)</li>
+                      </Link>
+                      <Link to={"/product-4"}>
+                        <li>E-Commerce</li>
+                      </Link>
+                    </ul>
+                  </h3>
+                </div>
+              </div>
+
+              <Link to={"/my-portfolio"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("portfolio")}
@@ -254,40 +212,7 @@ const NavbarContact = () => {
                 </div>
               </Link>
 
-              <Link to={"/products"} onClick={closeNavbar}>
-                <div
-                  className="item"
-                  onMouseEnter={() => handleDropdownToggle("Products")}
-                  onMouseLeave={() => handleDropdownToggle(null)}
-                >
-                  <p>Products</p>
-                  {activeDropdown === "Products" && (
-                    <div className="dropdown">
-                      <h3 className="card-header">
-                        <h3 style={{ fontWeight: 'bold', textAlign: 'center' , color:'black'}}>Our Products</h3>
-                        <ul>
-                          <ul className="inner-ul">
-                            <Link to={"/product-1"}>
-                              <li>LMS(Learning Management System)</li>
-                            </Link>
-                            <Link to={"/product-2"}>
-                              <li>ERS(Enterprise Resource Planning System)</li>
-                            </Link>
-                            <Link to={"/product-3"}>
-                              <li>CRM(Customer Relationship Management)</li>
-                            </Link>
-                            <Link to={"/product-4"}>
-                              <li>E-Commerce</li>
-                            </Link>
-                          </ul>
-                        </ul>
-                      </h3>
-                    </div>
-                  )}
-                </div>
-              </Link>
-
-              <Link to={"/industries"} onClick={closeNavbar}>
+              <Link to={"/industries"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("Industries")}
@@ -297,7 +222,7 @@ const NavbarContact = () => {
                   <p>Industries</p>
                   {showDropdown && activeDropdown === "Industries" && (
                     <div className="dropdown">
-                      <h3 className="card-header">
+                      <h3 className="card-header" style={{ fontWeight: 'bold', textAlign: 'left' , color:'black'}}>
                       <ul>
                         <Link to={"/bfsi"}>
                           <li>BFSI</li>
@@ -324,7 +249,7 @@ const NavbarContact = () => {
                  
                 </div>
               </Link>
-              <Link to={"/blogs"} onClick={closeNavbar}>
+              <Link to={"/blogs"}>
               <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("Company")}
@@ -335,7 +260,7 @@ const NavbarContact = () => {
                 </div>
               </Link>
 
-              <Link to={"/company"} onClick={closeNavbar}>
+              <Link to={"/company"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("Company")}

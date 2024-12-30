@@ -73,20 +73,6 @@ const NavbarContact = () => {
     handleDropdownClose();
   };
 
-	const handleItemClick = (e) => {
-		// Only close if a dropdown item was clicked
-		if (e.target.tagName.toLowerCase() === 'li') {
-			const itemsElement = document.querySelector('.items');
-			itemsElement.classList.add('hiding');
-			
-			setTimeout(() => {
-				itemsElement.classList.remove('open');
-				itemsElement.classList.remove('hiding');
-				setIsOpen(false); // Update the state
-			}, 300);
-		}
-	};
-
   // New code to close the navbar when an item is clicked
   const closeNavbar = () => {
     setIsOpen(false);

@@ -1,7 +1,5 @@
-/* Navbar Container */
 .navbar-container {
   width: 100%;
-  height: 80px;
   position: fixed;
   z-index: 100;
   background-color: white;
@@ -13,15 +11,13 @@
   background-color: rgba(250, 252, 253, 255) !important;
 }
 
-/* Navbar */
 .navbar {
-  padding-inline: 25px;
-  padding-right: 50px;
+  padding-inline: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 90px;
 }
 
 .scrolled-navbar {
@@ -29,16 +25,16 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Dropdown */
 .dropdown {
   position: absolute;
   background-color: #808080d2;
-  z-index: 10;
+  /* border: 1px solid #ccc; */
+  z-index: 10; /* Ensure dropdown is on top */
   visibility: hidden;
-  opacity: 0.2;
-  transform: translateY(0px);
+  opacity: 0;
+  transform: translateY(0px); /* Move the dropdown up by 10px initially */
   transition: transform 0.3s ease-in-out;
-  width: 300px;
+  width: 250px; /* Add width: 100% to make it take the full width of its parent */
   display: flex;
   flex-direction: column;
   border-top: 4px solid var(--secondary-color);
@@ -67,22 +63,23 @@ a {
   padding: 10px;
   width: 100%;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .dropdown li:hover {
-  background-color: #f0f0f0;
+  background-color: rgba(255, 255, 255, 0.2);
   color: var(--primary-color);
+  transform: scale(1.05);
 }
 
 .item:hover .dropdown {
   transition: all 0.5s ease-in-out;
   visibility: visible;
   opacity: 1;
-  top: 70px; /* Adjust the top position to show the dropdown below the item */
-  left: 12px; /* Adjust the left position to align with the item */
+  top: 90px; /* Adjust the top position to show the dropdown below the item */
+  left: 0; /* Adjust the left position to align with the item */
 }
 
-/* Navbar Item */
 a {
   display: flex;
   justify-content: center;
@@ -90,21 +87,20 @@ a {
 }
 
 .item {
-  position: relative;
-  height: 70px;
+  position: relative; /* Add relative positioning to the item */
+  height: 90px;
   display: flex;
   transition: all 2s ease-in-out;
   justify-content: center;
   align-items: center;
   width: 100px;
-  gap: 15px;
 }
 
 .logo {
-  width: 100px;
+  width: 120px;
+  height: 60px;
   padding-inline-start: 0px;
   padding-block: 0px;
-  height: 80px;
 }
 
 .logo img {
@@ -116,12 +112,11 @@ a {
 .items {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 30px;
   justify-content: space-evenly;
   align-items: center;
   height: 100%;
   position: relative;
-  transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .item {
@@ -134,9 +129,8 @@ a {
   color: var(--secondary-color);
 }
 
-/* Button Styles */
 .btn {
-  background-color: black !important;
+  background-color: rgb(209, 150, 150) !important;
   color: white;
   border-radius: 3px;
   display: flex;
@@ -162,7 +156,7 @@ a {
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 40px;
+  right: 46px;
   z-index: 2;
 }
 
@@ -176,7 +170,7 @@ a {
   position: absolute;
   top: 10px;
   left: 30px;
-  font-size: 20px;
+  font-size: 30px;
   border: none;
   cursor: pointer;
   z-index: 2;
@@ -191,12 +185,14 @@ a {
   color: var(--primary-color);
 }
 
-/* Services Container */
+/* services */
+
 .services-container {
   position: absolute;
   top: 90px; /* Adjust the top position to align with the navbar height */
   padding: 30px;
   font-family: sans-serif !important;
+  /* box-shadow: 0px 0px 30px 30px rgba(187, 189, 191, 255); */
   background-color: #808080d2;
   color: white;
   border-top: 5px solid var(--secondary-color);
@@ -212,6 +208,7 @@ a {
 .services-card {
   display: flex;
   flex-direction: column;
+  /* gap: 10px; */
   width: max-content;
   cursor: default;
 }
@@ -229,7 +226,6 @@ a {
   color: var(--primary-color);
   background-color: #f0f0f0;
 }
-
 .services-card ul li {
   color: white;
   transition: all 0.3s ease-in-out;
@@ -258,9 +254,6 @@ a {
   color: var(--secondary-color);
 }
 
-/* Media Queries for Responsiveness */
-
-/* For Large Screens */
 @media (max-width: 1200px) {
   .services-container {
     display: none;
@@ -276,25 +269,25 @@ a {
   .items {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 250px;
     align-items: start;
     color: white;
-    position: fixed;
+    position: fixed; /* Change to fixed to prevent overflow */
     top: 0;
-    right: -300px;
-    height: 100vh;
-    background-color: rgb(0, 0, 0, 0.90);
+    right: -300px; /* Initially off-screen */
+    height: 100vh; /* Full height */
+    background-color: rgb(0, 0, 0);
     z-index: 1;
-    transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    overflow-y: auto; /* Add this to make the menu scrollable */
     gap: 0px;
-    padding-top: 50px;
+    padding-top: 80px;
     justify-content: flex-start;
   }
 
   .btn {
     height: 30px;
-    padding: 8px;
+    padding: 3px;
   }
 
   .item {
@@ -311,6 +304,7 @@ a {
 
   .items.open {
     right: 0; /* Bring it into view */
+    background-color: rgba(0, 0, 0, 0.90); /* Ensure the background is semi-transparent */
   }
 
   .navbar {
@@ -326,20 +320,20 @@ a {
   .cancel-button {
     display: block;
     position: absolute;
-    top: 14px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
+    top: 15px;
+    left: 5px;
+    width: 50px;
+    height: 50px;
   }
 
   .container {
-    padding: 20px;
-    display: left;
+    padding: 10px;
+    display: flex;
     flex-direction: column;
   }
 
   .contact {
-    display: left;
+    display: flex;
     flex-direction: column;
   }
 
@@ -383,44 +377,15 @@ a {
     color: white;
     margin: 4px;
   }
-
   .dropdown {
-    top: 120px;
+    top: 40px;
   }
-
   .item:hover .dropdown {
     top: 40px;
   }
-
-  .item p {
-    color: white !important;
-  }
-
-  .dropdown {
-    background-color: rgba(128, 128, 128, 0.2);
-  }
-
-  .dropdown li {
-    color: white !important;
-  }
-
-  .dropdown li:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--primary-color) !important;
-  }
-
-  .items a {
-    color: white !important;
-    text-decoration: none;
-  }
-
-  .item:hover p {
-    color: var(--primary-color) !important;
-  }
 }
 
-/* For Medium Screens */
-@media (max-width: 780px) {
+@media (max-width: 750px) {
   .logo {
     height: 70px;
     width: 150px;
@@ -434,7 +399,6 @@ a {
   }
 }
 
-/* For Small Screens */
 @media (max-width: 480px) {
   .btn {
     display: none;
@@ -444,78 +408,66 @@ a {
   }
 }
 
-/* Item Styling */
-.item {
-  position: relative;
-  font-family: Arial, sans-serif;
-  margin: 15px;
+/* White glass door effect for the navbar */
+.glass-door {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  backdrop-filter: blur(10px); /* Blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-.item p {
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #000000;
+.navbar-list {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    animation: backgroundAnimation 5s ease infinite;
+    border-radius: 8px; /* Optional: for rounded corners */
 }
 
-/* Dropdown Animation */
-.dropdown {
-  position: absolute;
-  top: 30px;
-  left: 0;
-  background: linear-gradient(45deg, #6a11cb, #2575fc);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.5s ease-in-out, bgMove 3s infinite linear;
-  z-index: 100;
+/* Keyframes for background animation */
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
-.card-header {
-  color: #fff;
-  font-size: 20px;
-  margin-bottom: 10px;
+/* Media query for mobile and tablet views */
+@media (max-width: 768px) {
+    .navbar-list {
+        padding: 10px; /* Adjust padding for mobile */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+    }
 }
 
-.inner-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Media query for desktop view */
+@media (min-width: 769px) {
+    .navbar-list {
+        padding: 15px; /* Adjust padding for desktop */
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Optional: stronger shadow effect */
+        transition: transform 0.3s ease; /* Optional: smooth transform effect */
+    }
+
+    .navbar-list:hover {
+        transform: scale(1.05); /* Optional: scale effect on hover */
+    }
 }
 
-.inner-ul li {
-  padding: 10px;
-  font-size: 16px;
-  color: #fff;
-  transition: all 0.3s ease;
+.navbar-item {
+    position: relative; /* Required for absolute positioning of the dropdown */
 }
 
-.inner-ul li:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
-  border-radius: 5px;
+/* Dropdown list styles */
+.navbar-dropdown {
+    display: none; /* Initially hidden */
+    position: absolute; /* Positioning relative to the navbar item */
+    background: rgba(255, 255, 255, 0.9); /* Background for dropdown */
+    border-radius: 4px; /* Optional: rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+    z-index: 10; /* Ensure dropdown is above other elements */
 }
 
-/* Keyframe Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bgMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* Show dropdown on hover */
+.navbar-item:hover .navbar-dropdown {
+    display: block; /* Show dropdown on hover */
 }

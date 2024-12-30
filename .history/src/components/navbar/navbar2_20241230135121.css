@@ -1,0 +1,265 @@
+/* Navbar Container */
+.navbar-container {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  z-index: 100;
+  background-color: white;
+  transition: top 0.3s ease-in-out;
+  font-family: sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dark-navbar {
+  background-color: rgba(250, 252, 253, 255) !important;
+}
+
+/* Navbar */
+.navbar {
+  padding: 0 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+/* Logo */
+.logo {
+  width: 100px;
+  height: 80px;
+  padding: 5px 0;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Navigation Items */
+.items {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.item {
+  position: relative;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  color: black;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.item:hover {
+  color: var(--secondary-color);
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  background-color: rgba(128, 128, 128, 0.95);
+  min-width: 250px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  border-top: 4px solid var(--secondary-color);
+  border-radius: 0 0 4px 4px;
+}
+
+.item:hover .dropdown {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown li {
+  padding: 12px 20px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.dropdown li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--primary-color);
+}
+
+/* Button Styles */
+.btn {
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Menu Controls */
+.hamburger-button,
+.cancel-button {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 102;
+}
+
+/* Services Grid */
+.services-container {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.95);
+  padding: 30px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-top: 4px solid var(--secondary-color);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tablet View (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+  .items {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    padding: 80px 20px 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 101;
+  }
+
+  .items.open {
+    right: 0;
+  }
+
+  .item {
+    height: auto;
+    width: 100%;
+    color: white;
+    padding: 15px;
+    justify-content: flex-start;
+  }
+
+  .dropdown {
+    position: static;
+    width: 100%;
+    visibility: visible;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: none;
+    margin-top: 10px;
+    transform: none;
+  }
+
+  .item:hover .dropdown {
+    display: block;
+  }
+
+  .hamburger-button,
+  .cancel-button {
+    display: block;
+  }
+
+  .services-container {
+    display: none;
+  }
+}
+
+/* Mobile View (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .navbar-container,
+  .navbar {
+    height: 60px;
+  }
+
+  .logo {
+    height: 50px;
+    width: 80px;
+  }
+
+  .items {
+    width: 100%;
+    right: -100%;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .item {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .dropdown {
+    border-radius: 4px;
+  }
+
+  .dropdown li {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+}
+
+/* Small Mobile View (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  .navbar {
+    padding: 0 15px;
+  }
+
+  .logo {
+    width: 70px;
+  }
+
+  .btn {
+    display: none;
+  }
+
+  .hamburger-button {
+    padding: 8px;
+    font-size: 20px;
+  }
+}
+
+/* Utility Classes */
+.scrolled-navbar {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+body.menu-open {
+  overflow: hidden;
+}

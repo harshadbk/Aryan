@@ -121,7 +121,6 @@ a {
   align-items: center;
   height: 100%;
   position: relative;
-  transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .item {
@@ -162,13 +161,13 @@ a {
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 40px;
+  right: 47px;
   z-index: 2;
 }
 
-.hamburger-button:hover {
+/* .hamburger-button:hover {
   color: white;
-}
+} */
 
 /* Cancel Button Styles */
 .cancel-button {
@@ -176,7 +175,7 @@ a {
   position: absolute;
   top: 10px;
   left: 30px;
-  font-size: 20px;
+  font-size: 30px;
   border: none;
   cursor: pointer;
   z-index: 2;
@@ -279,13 +278,14 @@ a {
     width: 300px;
     align-items: start;
     color: white;
+		
     position: fixed;
     top: 0;
     right: -300px;
     height: 100vh;
-    background-color: rgb(0, 0, 0, 0.90);
+    background-color: rgb(0, 0, 0, 0.85);
     z-index: 1;
-    transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transition: right 0.3s ease-in-out;
     overflow-y: auto;
     gap: 0px;
     padding-top: 50px;
@@ -294,7 +294,7 @@ a {
 
   .btn {
     height: 30px;
-    padding: 8px;
+    padding: 3px;
   }
 
   .item {
@@ -326,20 +326,20 @@ a {
   .cancel-button {
     display: block;
     position: absolute;
-    top: 14px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
+    top: 15px;
+    left: 5px;
+    width: 50px;
+    height: 50px;
   }
 
   .container {
-    padding: 20px;
-    display: left;
+    padding: 10px;
+    display: flex;
     flex-direction: column;
   }
 
   .contact {
-    display: left;
+    display: flex;
     flex-direction: column;
   }
 
@@ -387,35 +387,8 @@ a {
   .dropdown {
     top: 120px;
   }
-
   .item:hover .dropdown {
     top: 40px;
-  }
-
-  .item p {
-    color: white !important;
-  }
-
-  .dropdown {
-    background-color: rgba(128, 128, 128, 0.2);
-  }
-
-  .dropdown li {
-    color: white !important;
-  }
-
-  .dropdown li:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--primary-color) !important;
-  }
-
-  .items a {
-    color: white !important;
-    text-decoration: none;
-  }
-
-  .item:hover p {
-    color: var(--primary-color) !important;
   }
 }
 

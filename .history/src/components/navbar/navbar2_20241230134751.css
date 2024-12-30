@@ -1,0 +1,243 @@
+/* Base Navbar Styles */
+.navbar-container {
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  z-index: 100;
+  background-color: white;
+  transition: top 0.3s ease-in-out;
+  font-family: sans-serif;
+}
+
+.navbar {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.dark-navbar {
+  background-color: rgba(250, 252, 253, 255) !important;
+}
+
+/* Logo Styles */
+.logo {
+  width: 120px;
+  height: 60px;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Navigation Items Container */
+.items {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Navigation Item Styles */
+.item {
+  position: relative;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  color: black;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.item:hover {
+  color: var(--secondary-color);
+}
+
+/* Button Styles */
+.btn {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  background-color: rgba(128, 128, 128, 0.95);
+  min-width: 200px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-top: 3px solid var(--secondary-color);
+}
+
+.item:hover .dropdown {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.dropdown li {
+  padding: 10px 15px;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hamburger Menu */
+.hamburger-button {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.cancel-button {
+  display: none;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Tablet View (768px to 1024px) */
+@media screen and (max-width: 1024px) {
+  .items {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    padding: 70px 20px 20px;
+    transition: right 0.3s ease-in-out;
+    gap: 10px;
+  }
+
+  .items.open {
+    right: 0;
+  }
+
+  .item {
+    height: auto;
+    padding: 15px;
+    width: 100%;
+    color: white;
+  }
+
+  .hamburger-button,
+  .cancel-button {
+    display: block;
+    z-index: 101;
+  }
+
+  .dropdown {
+    position: static;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+    display: none;
+  }
+
+  .item:hover .dropdown {
+    display: block;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Mobile View (up to 767px) */
+@media screen and (max-width: 767px) {
+  .navbar-container {
+    height: 60px;
+  }
+
+  .navbar {
+    height: 60px;
+    padding: 0 15px;
+  }
+
+  .logo {
+    width: 100px;
+    height: 50px;
+  }
+
+  .items {
+    width: 100%;
+    padding-top: 60px;
+  }
+
+  .item {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .dropdown {
+    margin-top: 5px;
+  }
+
+  .dropdown li {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Animation for Mobile Menu */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Scrolled Navbar Style */
+.scrolled-navbar {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}

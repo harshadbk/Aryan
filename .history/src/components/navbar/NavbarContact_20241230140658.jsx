@@ -1,5 +1,5 @@
 import "./nav.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Logo from "../../assets/devon.png";
 import "./navbar2.css";
 import { FaFacebookF } from "react-icons/fa6";
@@ -18,89 +18,85 @@ const NavbarContact = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [showServices, setShowServices] = useState(false);
+  const [lastScroll, setLastScroll] = useState(0);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 1200) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  // Handle scroll events
+  const handleScroll = useCallback(() => {
+    const currentScroll = window.pageYOffset;
+    const navbar = document.querySelector('.navbar-container');
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    // Hide/show navbar on scroll
+    if (currentScroll > lastScroll && currentScroll > 80) {
+      navbar.style.transform = 'translateY(-100%)';
+    } else {
+      navbar.style.transform = 'translateY(0)';
+    }
 
-  const handleScroll = () => {
-    if (window.scrollY > 50) {
+    // Add shadow on scroll
+    if (currentScroll > 80) {
       setScrolled(true);
     } else {
       setScrolled(false);
     }
-  };
 
-  //... rest of your code
+    setLastScroll(currentScroll);
+  }, [lastScroll]);
 
+  // Handle mobile menu toggle
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    document.body.style.overflow = !isOpen ? 'hidden' : '';
   };
 
+  // Handle dropdown toggle
   const handleDropdownToggle = (item) => {
-    if (activeDropdown === item) {
-      setShowDropdown(!showDropdown);
+    if (window.innerWidth <= 1200) {
+      if (activeDropdown === item) {
+        setShowDropdown(!showDropdown);
+      } else {
+        setActiveDropdown(item);
+        setShowDropdown(true);
+      }
     } else {
-      setActiveDropdown(item);
-      setShowDropdown(true);
+      // Desktop behavior remains the same
+      if (activeDropdown === item) {
+        setShowDropdown(!showDropdown);
+      } else {
+        setActiveDropdown(item);
+        setShowDropdown(true);
+      }
     }
   };
 
-  const handleDropdownClose = () => {
-    setShowDropdown(false);
-    setActiveDropdown(null);
-  };
-
-  const handleMouseLeaveItem = () => {
-    handleDropdownClose();
-  };
-
-	const handleItemClick = (e) => {
-		// Only close if a dropdown item was clicked
-		if (e.target.tagName.toLowerCase() === 'li') {
-			const itemsElement = document.querySelector('.items');
-			itemsElement.classList.add('hiding');
-			
-			setTimeout(() => {
-				itemsElement.classList.remove('open');
-				itemsElement.classList.remove('hiding');
-				setIsOpen(false); // Update the state
-			}, 300);
-		}
-	};
-
-  // New code to close the navbar when an item is clicked
-  const closeNavbar = () => {
-    setIsOpen(false);
-  };
-
-  // Toggle dropdown visibility on click for mobile devices
+  // Handle window resize
   useEffect(() => {
-    document.querySelectorAll('.navbar-item').forEach(item => {
-      item.addEventListener('click', function() {
-        const dropdown = this.querySelector('.navbar-dropdown');
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-      });
-    });
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1200);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initial check
+    
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Handle scroll events
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isOpen && !event.target.closest('.items')) {
+        toggleMenu();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen]);
 
   return (
     <div className="nav-con">
@@ -165,9 +161,8 @@ const NavbarContact = () => {
         </div>
       </div>
       <div className="nav">
-        <div
-          className={`navbar-container ${scrolled ? "scrolled-navbar" : ""} ${isMobile ? "scrolled-navbar" : ""} ${showServices ? "dark-navbar" : ""} ${isOpen ? "glass-door" : ""}`}
-        >
+        <div className={`navbar-container ${scrolled ? "scrolled-navbar" : ""} 
+          ${isMobile ? "scrolled-navbar" : ""}`}>
           <div className="navbar">
             <div className="logo">
               <img src={Logo} alt="Logo" />
@@ -176,34 +171,44 @@ const NavbarContact = () => {
             {!isOpen && (
               <div className="btn-ham">
                 <MyCustomButton
-                  name={"Get A Qoute"}
+                  name={"Get A Quote"}
                   backgroundColor="black"
                   color="white"
                 />
               </div>
             )}
-            {!isOpen && (
-              <button className="hamburger-button" onClick={toggleMenu}>
-                &#9776; {/* This is the "☰" character for the hamburger icon */}
-              </button>
-            )}
+
+            <button 
+              className="hamburger-button" 
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              &#9776;
+            </button>
+
             <div className={`items ${isOpen ? "open" : ""}`}>
               {isOpen && (
-                <button className="cancel-button" onClick={toggleMenu}>
-                  <img src={Cancel} alt="Cancel img" />
+                <button 
+                  className="cancel-button" 
+                  onClick={toggleMenu}
+                  aria-label="Close menu"
+                >
+                  <img src={Cancel} alt="Cancel" />
                 </button>
               )}
-              <Link to={"/"} onClick={closeNavbar}>
+
+              <Link to={"/"}>
                 <div className="item">
                   <p>Home</p>
                 </div>
               </Link>
 
-            <Link to={"/services"} onClick={closeNavbar}>
+              <Link to={"/services"}>
                 <div
                   className="item"
-                  onMouseEnter={() => handleDropdownToggle("services")}
-                  onMouseLeave={() => handleDropdownToggle(null)}
+                  onMouseEnter={() => !isMobile && handleDropdownToggle("services")}
+                  onMouseLeave={() => !isMobile && handleDropdownToggle(null)}
+                  onClick={() => isMobile && handleDropdownToggle("services")}
                 >
                   <p>Services</p>
                   {activeDropdown === "services" && (
@@ -215,36 +220,36 @@ const NavbarContact = () => {
                       >
                         Custom Web Application Development
                       </h3>
-                      <ul className="inner-ul">
-                        <Link to={"/net-pen-test"}>
-                          <li>Web Development</li>
-                        </Link>
-                        <Link to={"/web-app-sec"}>
-                          <li>Web Application Security Testing</li>
-                        </Link>
-                        <Link to={"/mob-app-pen"}>
-                          <li>Customized Software Development</li>
-                        </Link>
-                        <Link to={"/api-sec"}>
-                          <li>CRM Software</li>
-                        </Link>
-                        <Link to={"/wire-pen-test"}>
-                          <li>ERP Systems</li>
-                        </Link>
-                        <Link to={"/ot-iot"}>
-                          <li>API Development</li>
-                        </Link>
-                        <Link to={"/cloud-pen"}>
-                          <li>App Development</li>
-                        </Link>
-                      </ul>
-                    </h3>
+                        <ul className="inner-ul">
+                          <Link to={"/net-pen-test"}>
+                            <li>Web Development</li>
+                          </Link>
+                          <Link to={"/web-app-sec"}>
+                            <li>Web Application Security Testing</li>
+                          </Link>
+                          <Link to={"/mob-app-pen"}>
+                            <li>Customized Software Development</li>
+                          </Link>
+                          <Link to={"/api-sec"}>
+                            <li>CRM Software</li>
+                          </Link>
+                          <Link to={"/wire-pen-test"}>
+                            <li>ERP Systems</li>
+                          </Link>
+                          <Link to={"/ot-iot"}>
+                            <li>API Development</li>
+                          </Link>
+                          <Link to={"/cloud-pen"}>
+                            <li>App Development</li>
+                          </Link>
+                        </ul>
+                      </h3>
                     </div>
                   )}
                 </div>
               </Link>
 
-              <Link to={"/my-portfolio"} onClick={closeNavbar}>
+              <Link to={"/my-portfolio"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("portfolio")}
@@ -254,7 +259,7 @@ const NavbarContact = () => {
                 </div>
               </Link>
 
-              <Link to={"/products"} onClick={closeNavbar}>
+              <Link to={"/products"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("Products")}
@@ -265,7 +270,6 @@ const NavbarContact = () => {
                     <div className="dropdown">
                       <h3 className="card-header">
                         <h3 style={{ fontWeight: 'bold', textAlign: 'center' , color:'black'}}>Our Products</h3>
-                        <ul>
                           <ul className="inner-ul">
                             <Link to={"/product-1"}>
                               <li>LMS(Learning Management System)</li>
@@ -280,14 +284,13 @@ const NavbarContact = () => {
                               <li>E-Commerce</li>
                             </Link>
                           </ul>
-                        </ul>
                       </h3>
                     </div>
                   )}
                 </div>
               </Link>
 
-              <Link to={"/industries"} onClick={closeNavbar}>
+              <Link to={"/industries"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("Industries")}
@@ -297,7 +300,7 @@ const NavbarContact = () => {
                   <p>Industries</p>
                   {showDropdown && activeDropdown === "Industries" && (
                     <div className="dropdown">
-                      <h3 className="card-header">
+                      <h3 className="card-header" style={{ fontWeight: 'bold', textAlign: 'left' , color:'black'}}>
                       <ul>
                         <Link to={"/bfsi"}>
                           <li>BFSI</li>
@@ -324,7 +327,7 @@ const NavbarContact = () => {
                  
                 </div>
               </Link>
-              <Link to={"/blogs"} onClick={closeNavbar}>
+              <Link to={"/blogs"}>
               <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("Company")}
@@ -335,7 +338,7 @@ const NavbarContact = () => {
                 </div>
               </Link>
 
-              <Link to={"/company"} onClick={closeNavbar}>
+              <Link to={"/company"}>
                 <div
                   className="item"
                   onMouseEnter={() => handleDropdownToggle("Company")}

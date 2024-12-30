@@ -162,7 +162,7 @@ a {
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 40px;
+  right: 45px;
   z-index: 2;
 }
 
@@ -327,7 +327,7 @@ a {
     display: block;
     position: absolute;
     top: 14px;
-    left: 20px;
+    left: 18px;
     width: 40px;
     height: 40px;
   }
@@ -335,7 +335,7 @@ a {
   .container {
     padding: 20px;
     display: left;
-    flex-direction: column;
+    flex-direction: column-left;
   }
 
   .contact {
